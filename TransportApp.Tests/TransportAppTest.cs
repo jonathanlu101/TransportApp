@@ -21,9 +21,6 @@ namespace TransportApp.Tests
             var apiKey = ConfigurationManager.AppSettings["apiKey"];
             var stopApi = new StopsApi(new PTVApi.Client.Configuration(new ApiClient("http://timetableapi.ptv.vic.gov.au", devId, apiKey)));
             var response = stopApi.StopsStopsByGeolocation(-37.8232845f, 145.2247167f);
-
-            Console.WriteLine(response.Stops[0].StopName);
-
             Assert.Pass("Your first passing test");
         }
     }
