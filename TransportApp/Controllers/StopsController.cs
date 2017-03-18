@@ -25,10 +25,10 @@ namespace TransportApp.Controllers
         }
 
         [Route("nearby")]
-        public IHttpActionResult GetNearbyStops(float latitude, float longtitude)
+        public IHttpActionResult GetNearbyStops(float latitude, float longitude)
         {
             var stopApi = new StopsApi(new PTVApi.Client.Configuration(new ApiClient("http://timetableapi.ptv.vic.gov.au", _devId, _apiKey)));
-            var response = stopApi.StopsStopsByGeolocation(latitude, longtitude);
+            var response = stopApi.StopsStopsByGeolocation(latitude, longitude);
             return Ok(response.Stops);
         }
     }

@@ -13,6 +13,8 @@ namespace TransportApp
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.IgnoreRoute("AngularViews/{*pathInfo*}");
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

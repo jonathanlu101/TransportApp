@@ -8,6 +8,14 @@ namespace TransportApp
         // For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+            bundles.Add(new Bundle("~/bundles/lib").Include(
+                        "~/Scripts/jquery-{version}.js",
+                        "~/Scripts/angular.js",
+                        "~/Scripts/angular-ui-router.js",
+                        "~/Scripts/bootstrap.js",
+                        "~/Scripts/respond.js")
+                        .IncludeDirectory("~/Scripts/app", "*.js", true));
+
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
