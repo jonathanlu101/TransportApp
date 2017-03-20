@@ -10,16 +10,16 @@
     function HomeCtrl($location, stopService) {
         var vm = this;
 
-        vm.title = 'HomeCtrl';
-
-        vm.getGPSCordinates = function () {
+        vm.getNearbyStops = function () {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function (position) {
-                    vm.latitude = position.coords.latitude;
-                    vm.longitude = position.coords.longitude;
-                    stopService.getNearbyStops(vm.latitude, vm.longitude).then(function (response) {
-                        console.log(response);
-                    });
+
+                    let latitude = position.coords.latitude;
+                    let longitude = position.coords.longitude;
+
+                    stopService.getNearbyStops(latitude, longitude).then(function (response) {
+                            vm.nearbyStops = response.data;
+                        });
                 });
             } else {
                 alert("Geolocation is not supported by this browser.");

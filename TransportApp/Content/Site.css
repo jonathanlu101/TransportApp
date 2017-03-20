@@ -15,3 +15,20 @@ select,
 textarea {
     max-width: 280px;
 }
+
+#nearby-stops h4{
+    margin-top: 0;
+}
+
+#nearby-stops {
+    border: 1px solid #EEEEEE;
+    padding: 2%;
+}
+
+#nearby-stops h1{
+    margin-top: 5px;
+}
+
+#nearby-stops .glyphicon {
+    color: #cccccc;
+}

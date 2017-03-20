@@ -15,7 +15,12 @@
         return service;
 
         function getNearbyStops(latitude, longitude) {
-            return $http.get(`api/stops/nearby?latitude=${latitude}&longitude=${longitude}`);
+
+            let queryString = `api/stops/nearby?latitude=${latitude}&longitude=${longitude}`;
+
+            console.log(queryString);
+
+            return $http.get(queryString);
         }
     }
 })();
