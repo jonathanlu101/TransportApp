@@ -7,7 +7,7 @@ using TransportApp.PTVApi.Model;
 
 namespace TransportApp.Dto
 {
-    public class NearbyStopsResponse
+    public class NearbyStopsDto
     {
         public List<V3StopGeosearch> TrainStops { get; set; }
         public List<V3StopGeosearch> BusStops { get; set; }
