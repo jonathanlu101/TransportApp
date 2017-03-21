@@ -3,43 +3,66 @@
         <div id="nearby-stops">
             <h1>Nearby Stops</h1>
             <button class="btn btn-primary" ng-click="homeVm.getNearbyStops()">Get Nearby Stops</button>
-            <div id="nearby-bus-stops">
-                <h3>Bus Stops <i class="fa fa-bus"></i></h3>
-                <div class="list-group" ng-show="homeVm.nearbyStops.busStops">
-                    <div href="#" class="list-group-item" ng-repeat="stop in homeVm.nearbyStops.busStops">
-                        <h4>{{stop.stop_name}}</h4>
-                        <p ng-click="homeVm.getRoutes(stop)">
-                            {{stop.stop_distance | number: 0}}m 
-                            <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <hr />
-            <div id="nearby-train-stops">
-                <h3>Train Stations <i class="fa fa-train"></i></h3>
-                <div class="list-group" ng-show="homeVm.nearbyStops.trainStops">
-                    <div href="#" class="list-group-item" ng-repeat="stop in homeVm.nearbyStops.trainStops">
-                        <h4>{{stop.stop_name}}</h4>
-                        <p>
-                            {{stop.stop_distance | number: 0}}m
-                            <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <hr />
-            <div id="nearby-tram-stops">
-                <h3>Tram Stations <i class="fa fa-subway"></i></h3>
-                <div class="list-group" ng-show="homeVm.nearbyStops.tramStops">
-                    <div href="#" class="list-group-item" ng-repeat="stop in homeVm.nearbyStops.tramStops">
-                        <h4>{{stop.stop_name}}</h4>
-                        <p>
-                            {{stop.stop_distance | number: 0}}m
-                            <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-                        </p>
-                    </div>
-                </div>
+            <div ng-cloak>
+                <md-content>
+                    <md-tabs md-dynamic-height md-border-bottom>
+                        <md-tab>
+                            <md-tab-label>
+                                <h3><i class="fa fa-train"></i> Train</h3>
+                            </md-tab-label>
+                            <md-tab-body>
+                                <md-content class="md-padding">
+
+                                    <div class="list-group" ng-show="homeVm.nearbyStops.trainStops">
+                                        <div href="#" class="list-group-item" ng-repeat="stop in homeVm.nearbyStops.trainStops">
+                                            <h4>{{stop.stop_name}}</h4>
+                                            <p>
+                                                {{stop.stop_distance | number: 0}}m
+                                                <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </md-content>
+                            </md-tab-body>
+                        </md-tab>
+                        <md-tab>
+                            <md-tab-label>
+                                <h3><i class="fa fa-bus"></i> Bus</h3>
+                            </md-tab-label>
+                            <md-tab-body>
+                                <md-content class="md-padding">
+                                    <div class="list-group" ng-show="homeVm.nearbyStops.busStops">
+                                        <div href="#" class="list-group-item" ng-repeat="stop in homeVm.nearbyStops.busStops">
+                                            <h4>{{stop.stop_name}}</h4>
+                                            <p ng-click="homeVm.getRoutes(stop)">
+                                                {{stop.stop_distance | number: 0}}m
+                                                <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </md-content>
+                            </md-tab-body>
+                        </md-tab>
+                        <md-tab>
+                            <md-tab-label>
+                                <h3><i class="fa fa-subway"></i> Tram</h3>
+                            </md-tab-label>
+                            <md-tab-body>
+                                <md-content class="md-padding">
+                                    <div class="list-group" ng-show="homeVm.nearbyStops.tramStops">
+                                        <div href="#" class="list-group-item" ng-repeat="stop in homeVm.nearbyStops.tramStops">
+                                            <h4>{{stop.stop_name}}</h4>
+                                            <p>
+                                                {{stop.stop_distance | number: 0}}m
+                                                <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </md-content>
+                            </md-tab-body>
+                        </md-tab>
+                    </md-tabs>
+                </md-content>
             </div>
         </div>
     </div>

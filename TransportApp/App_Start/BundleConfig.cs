@@ -8,12 +8,15 @@ namespace TransportApp
         // For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.UseCdn = true;
 
             bundles.Add(new Bundle("~/bundles/lib").Include(
                         "~/Scripts/jquery-{version}.js",
-                        "~/Scripts/angular.js",
+                        "~/Scripts/angular/angular.js",
                         "~/Scripts/angular-ui-router.js",
+                        "~/Scripts/angular-messages.js",
+                        "~/Scripts/angular-aria/angular-aria.js",
+                        "~/Scripts/angular-animate/angular-animate.js",
+                        "~/Scripts/angular-material/angular-material.js",
                         "~/Scripts/bootstrap.js",
                         "~/Scripts/respond.js")
                         .IncludeDirectory("~/Scripts/app", "*.js", true));
@@ -32,9 +35,8 @@ namespace TransportApp
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/angular-material.css",
                       "~/Content/site.css"));
-
-            BundleTable.EnableOptimizations = true;
         }
     }
 }

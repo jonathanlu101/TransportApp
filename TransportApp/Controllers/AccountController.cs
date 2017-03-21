@@ -17,6 +17,7 @@ using TransportApp.Models;
 using TransportApp.Providers;
 using TransportApp.Results;
 using System.Text;
+using System.Linq;
 
 namespace TransportApp.Controllers
 {
@@ -36,6 +37,7 @@ namespace TransportApp.Controllers
         {
             UserManager = userManager;
             AccessTokenFormat = accessTokenFormat;
+            List<string> apple = new List<string>();
         }
 
         public ApplicationUserManager UserManager

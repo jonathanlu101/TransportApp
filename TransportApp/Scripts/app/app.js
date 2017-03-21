@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    angular.module('TransportApp', ['ui.router'])
+    angular.module('TransportApp', ['ui.router', 'ngAnimate', 'ngMessages', 'ngMaterial'])
         .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
             $locationProvider.html5Mode(true);
