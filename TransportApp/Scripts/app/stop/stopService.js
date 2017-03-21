@@ -18,8 +18,6 @@
 
             let queryString = `api/stops/nearby?latitude=${latitude}&longitude=${longitude}`;
 
-            console.log(queryString);
-
             return $http.get(queryString);
         }
     }

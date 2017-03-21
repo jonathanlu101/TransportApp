@@ -1,22 +1,21 @@
 ﻿<div class="row">
     <div class="col-md-6">
         <div id="nearby-stops">
-            <h1>Nearby Stops</h1>
-            <button class="btn btn-primary" ng-click="homeVm.getNearbyStops()">Get Nearby Stops</button>
+            <h2>Nearby Stops</h2>
+            <button class="btn btn-primary" ng-click="homeVm.getNearbyStops()">Get My Location</button>
             <div ng-cloak>
                 <md-content>
                     <md-tabs md-dynamic-height md-border-bottom>
                         <md-tab>
                             <md-tab-label>
-                                <h3><i class="fa fa-train"></i> Train</h3>
+                                <h4><i class="fa fa-train"></i> Train</h4>
                             </md-tab-label>
                             <md-tab-body>
                                 <md-content class="md-padding">
-
                                     <div class="list-group" ng-show="homeVm.nearbyStops.trainStops">
                                         <div href="#" class="list-group-item" ng-repeat="stop in homeVm.nearbyStops.trainStops">
                                             <h4>{{stop.stop_name}}</h4>
-                                            <p>
+                                            <p ng-click="homeVm.showStopDepatures(stop)">
                                                 {{stop.stop_distance | number: 0}}m
                                                 <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
                                             </p>
@@ -27,7 +26,7 @@
                         </md-tab>
                         <md-tab>
                             <md-tab-label>
-                                <h3><i class="fa fa-bus"></i> Bus</h3>
+                                <h4><i class="fa fa-bus"></i> Bus</h4>
                             </md-tab-label>
                             <md-tab-body>
                                 <md-content class="md-padding">
@@ -45,7 +44,7 @@
                         </md-tab>
                         <md-tab>
                             <md-tab-label>
-                                <h3><i class="fa fa-subway"></i> Tram</h3>
+                                <h4><i class="fa fa-subway"></i> Tram</h4>
                             </md-tab-label>
                             <md-tab-body>
                                 <md-content class="md-padding">
