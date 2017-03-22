@@ -15,6 +15,7 @@ namespace TransportApp.App_Start
             Mapper.Initialize(cfg =>
             {
                 cfg.CreateMap<V3Departure, DepartureDto>();
+                cfg.CreateMap<V3StopGeosearch, StopDto>();
             });
         }
     }

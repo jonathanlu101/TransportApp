@@ -243,6 +243,7 @@
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Dto\DepartureDto.cs" />
     <Compile Include="Dto\NearbyStopsDto.cs" />
+    <Compile Include="Dto\StopDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -341,6 +342,7 @@
     <Content Include="Scripts\angular\angular.js" />
     <Content Include="Scripts\angular\angular.min.js" />
     <Content Include="Scripts\app\app.js" />
+    <Content Include="Scripts\app\departure\departureService.js" />
     <Content Include="Scripts\app\home\HomeCtrl.js" />
     <Content Include="AngularViews\_home.html" />
     <Content Include="Scripts\app\stop\stopService.js" />

@@ -14,9 +14,9 @@
                                 <md-content class="md-padding">
                                     <div class="list-group" ng-show="homeVm.nearbyStops.trainStops">
                                         <div href="#" class="list-group-item" ng-repeat="stop in homeVm.nearbyStops.trainStops">
-                                            <h4>{{stop.stop_name}}</h4>
+                                            <h4>{{stop.stopName}}</h4>
                                             <p ng-click="homeVm.showStopDepatures(stop)">
-                                                {{stop.stop_distance | number: 0}}m
+                                                {{stop.stopDistance | number: 0}}m
                                                 <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
                                             </p>
                                         </div>
@@ -32,9 +32,9 @@
                                 <md-content class="md-padding">
                                     <div class="list-group" ng-show="homeVm.nearbyStops.busStops">
                                         <div href="#" class="list-group-item" ng-repeat="stop in homeVm.nearbyStops.busStops">
-                                            <h4>{{stop.stop_name}}</h4>
+                                            <h4>{{stop.stopName}}</h4>
                                             <p ng-click="homeVm.getRoutes(stop)">
-                                                {{stop.stop_distance | number: 0}}m
+                                                {{stop.stopDistance | number: 0}}m
                                                 <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
                                             </p>
                                         </div>
@@ -50,9 +50,9 @@
                                 <md-content class="md-padding">
                                     <div class="list-group" ng-show="homeVm.nearbyStops.tramStops">
                                         <div href="#" class="list-group-item" ng-repeat="stop in homeVm.nearbyStops.tramStops">
-                                            <h4>{{stop.stop_name}}</h4>
+                                            <h4>{{stop.stopName}}</h4>
                                             <p>
-                                                {{stop.stop_distance | number: 0}}m
+                                                {{stop.stopDistance | number: 0}}m
                                                 <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
                                             </p>
                                         </div>

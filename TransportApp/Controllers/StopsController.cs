@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -41,21 +42,24 @@ namespace TransportApp.Controllers
 
             var stopApi = new StopsApi(new PTVApi.Client.Configuration(new ApiClient("http://timetableapi.ptv.vic.gov.au", _devId, _apiKey)));
 
-            response.TrainStops = stopApi.StopsStopsByGeolocation(latitude,
+            var trainStopsResponse = stopApi.StopsStopsByGeolocation(latitude,
                 longitude,
                 maxDistance: 10000,
                 maxResults: 5,
                 routeTypes: new List<int?> { 0 }).Stops;
-            response.TramStops = stopApi.StopsStopsByGeolocation(latitude,
+            response.TrainStops = Mapper.Map<List<V3StopGeosearch>, List<StopDto>>(trainStopsResponse);
+            var tramStopsResponse = stopApi.StopsStopsByGeolocation(latitude,
                 longitude,
                 maxDistance: 10000,
                 maxResults: 5,
                 routeTypes: new List<int?> { 1 }).Stops;
-            response.BusStops = stopApi.StopsStopsByGeolocation(latitude,
+            response.TramStops = Mapper.Map<List<V3StopGeosearch>, List<StopDto>>(tramStopsResponse);
+            var busStopsResponse= stopApi.StopsStopsByGeolocation(latitude,
                 longitude,
                 maxDistance: 10000,
                 maxResults: 5,
                 routeTypes: new List<int?> { 2 }).Stops;
+            response.BusStops = Mapper.Map<List<V3StopGeosearch>, List<StopDto>>(busStopsResponse);
 
             return Ok(response);
         }

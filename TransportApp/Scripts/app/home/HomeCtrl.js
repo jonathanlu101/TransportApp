@@ -5,9 +5,9 @@
         .module('TransportApp')
         .controller('HomeCtrl', HomeCtrl);
 
-    HomeCtrl.$inject = ['$location', 'stopService'];
+    HomeCtrl.$inject = ['$location', 'stopService', 'departureService'];
 
-    function HomeCtrl($location, stopService) {
+    function HomeCtrl($location, stopService, departureService) {
         var vm = this;
 
         vm.getNearbyStops = function () {
@@ -25,8 +25,11 @@
         };
 
         vm.showStopDepatures = function (stop) {
-            console.log(stop);
-            alert("asdf");
+            departureService.getStopDepartures(function () {
+
+            }, function () {
+                alert("Couldn't get departures for Stop " + stop.stop_name);
+            });
         }
     }
 })();
