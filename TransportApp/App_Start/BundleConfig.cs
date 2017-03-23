@@ -18,7 +18,8 @@ namespace TransportApp
                         "~/Scripts/angular-animate/angular-animate.js",
                         "~/Scripts/angular-material/angular-material.js",
                         "~/Scripts/bootstrap.js",
-                        "~/Scripts/respond.js")
+                        "~/Scripts/respond.js",
+                        "~/Scripts/smart-table.js")
                         .IncludeDirectory("~/Scripts/app", "*.js", true));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(

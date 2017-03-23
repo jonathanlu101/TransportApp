@@ -25,7 +25,7 @@
         };
 
         vm.toogleStopDepartures = function (stop) {
-            if (!stop.departures) {
+            if (!stop.departures || stop.departures.length == 0) {
                 departureService.getStopDepartures(stop.routeType, stop.stopId).then(function (response) {
                     stop.departures = response.data;
                 }, function () {

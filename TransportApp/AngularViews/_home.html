@@ -13,7 +13,7 @@
                             <md-tab-body>
                                 <md-content class="md-padding">
                                     <div class="list-group" ng-show="homeVm.nearbyStops.trainStops">
-                                        <div href="#" class="list-group-item" ng-repeat="stop in homeVm.nearbyStops.trainStops">
+                                        <div class="list-group-item" ng-repeat="stop in homeVm.nearbyStops.trainStops">
                                             <h4>{{stop.stopName}}</h4>
                                             <p ng-click="homeVm.toogleStopDepartures(stop)">
                                                 {{stop.stopDistance | number: 0}}m
@@ -22,10 +22,24 @@
                                                       aria-hidden="true">
                                                 </span>
                                             </p>
-                                            <p ng-repeat="departure in stop.departures" ng-show="stop.showDepartures">
-                                                <b>{{departure.directionName}}</b>
-                                                {{departure.scheduledDepartureUtc | date : "HH:mma"}}
-                                            </p>
+                                            <table class="table table-striped" 
+                                                   ng-show="stop.departures && stop.showDepartures"
+                                                   st-safe-src="stop.departures"
+                                                   st-table="stop.displayedDepartures">
+                                                <tbody>
+                                                    <tr ng-repeat="departure in stop.displayedDepartures">
+                                                        <td>{{departure.directionName}}</td>
+                                                        <td>{{departure.scheduledDepartureUtc | date : "HH:mma"}}</td>
+                                                    </tr>
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr>
+                                                        <td colspan="2" class="text-center">
+                                                            <div st-pagination="" st-items-by-page="4" st-displayed-pages="7"></div>
+                                                        </td>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
                                         </div>
                                     </div>
                                 </md-content>
@@ -40,10 +54,31 @@
                                     <div class="list-group" ng-show="homeVm.nearbyStops.busStops">
                                         <div href="#" class="list-group-item" ng-repeat="stop in homeVm.nearbyStops.busStops">
                                             <h4>{{stop.stopName}}</h4>
-                                            <p ng-click="homeVm.getRoutes(stop)">
+                                            <p ng-click="homeVm.toogleStopDepartures(stop)">
                                                 {{stop.stopDistance | number: 0}}m
-                                                <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                                                <span class="glyphicon"
+                                                      ng-class="{'glyphicon-chevron-down': !stop.showDepartures, 'glyphicon-chevron-up': stop.showDepartures}"
+                                                      aria-hidden="true">
+                                                </span>
                                             </p>
+                                            <table class="table table-striped"
+                                                   ng-show="stop.departures && stop.showDepartures"
+                                                   st-safe-src="stop.departures"
+                                                   st-table="stop.displayedDepartures">
+                                                <tbody>
+                                                    <tr ng-repeat="departure in stop.displayedDepartures">
+                                                        <td>{{departure.directionName}}</td>
+                                                        <td>{{departure.scheduledDepartureUtc | date : "HH:mma"}}</td>
+                                                    </tr>
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr>
+                                                        <td colspan="2" class="text-center">
+                                                            <div st-pagination="" st-items-by-page="4" st-displayed-pages="7"></div>
+                                                        </td>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
                                         </div>
                                     </div>
                                 </md-content>
@@ -58,10 +93,31 @@
                                     <div class="list-group" ng-show="homeVm.nearbyStops.tramStops">
                                         <div href="#" class="list-group-item" ng-repeat="stop in homeVm.nearbyStops.tramStops">
                                             <h4>{{stop.stopName}}</h4>
-                                            <p>
+                                            <p ng-click="homeVm.toogleStopDepartures(stop)">
                                                 {{stop.stopDistance | number: 0}}m
-                                                <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                                                <span class="glyphicon"
+                                                      ng-class="{'glyphicon-chevron-down': !stop.showDepartures, 'glyphicon-chevron-up': stop.showDepartures}"
+                                                      aria-hidden="true">
+                                                </span>
                                             </p>
+                                            <table class="table table-striped"
+                                                   ng-show="stop.departures && stop.showDepartures"
+                                                   st-safe-src="stop.departures"
+                                                   st-table="stop.displayedDepartures">
+                                                <tbody>
+                                                    <tr ng-repeat="departure in stop.displayedDepartures">
+                                                        <td>{{departure.directionName}}</td>
+                                                        <td>{{departure.scheduledDepartureUtc | date : "HH:mma"}}</td>
+                                                    </tr>
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr>
+                                                        <td colspan="2" class="text-center">
+                                                            <div st-pagination="" st-items-by-page="4" st-displayed-pages="7"></div>
+                                                        </td>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
                                         </div>
                                     </div>
                                 </md-content>

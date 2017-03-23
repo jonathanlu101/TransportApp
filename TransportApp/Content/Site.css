@@ -16,13 +16,15 @@ textarea {
     max-width: 280px;
 }
 
-#nearby-stops h4{
-    margin-top: 0;
-}
+/* Nearby Stops */
 
 #nearby-stops {
     border: 1px solid #EEEEEE;
     padding: 2%;
+}
+
+#nearby-stops h4{
+    margin-top: 0;
 }
 
 #nearby-stops h2{
@@ -33,6 +35,10 @@ textarea {
     color: #cccccc;
 }
 
-md-tab-item h3{
+#nearby-stops ul.pagination{
     margin: 0;
+}
+
+#nearby-stops table {
+    margin-bottom: 0;
 }
