@@ -14,8 +14,8 @@
 
         return service;
 
-        function getStopDepartures(stopId, routeType) {
-            let queryString = `api/departures/${routeType}/2/stop/${stopId}`;
+        function getStopDepartures(routeType, stopId) {
+            let queryString = `api/departures/route_type/${routeType}/stop/${stopId}`;
             return $http.get(queryString);
         }
     }

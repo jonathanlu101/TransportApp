@@ -24,12 +24,20 @@
             });
         };
 
-        vm.showStopDepatures = function (stop) {
-            departureService.getStopDepartures(function () {
+        vm.toogleStopDepartures = function (stop) {
+            if (!stop.departures) {
+                departureService.getStopDepartures(stop.routeType, stop.stopId).then(function (response) {
+                    stop.departures = response.data;
+                }, function () {
+                    alert("Couldn't get departures for Stop " + stop.stop_name);
+                });
+            }
 
-            }, function () {
-                alert("Couldn't get departures for Stop " + stop.stop_name);
-            });
+            if (!stop.showDepartures) {
+                stop.showDepartures = true;
+            } else {
+                stop.showDepartures = false;
+            }
         }
     }
 })();

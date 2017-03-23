@@ -15,9 +15,16 @@
                                     <div class="list-group" ng-show="homeVm.nearbyStops.trainStops">
                                         <div href="#" class="list-group-item" ng-repeat="stop in homeVm.nearbyStops.trainStops">
                                             <h4>{{stop.stopName}}</h4>
-                                            <p ng-click="homeVm.showStopDepatures(stop)">
+                                            <p ng-click="homeVm.toogleStopDepartures(stop)">
                                                 {{stop.stopDistance | number: 0}}m
-                                                <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                                                <span class="glyphicon" 
+                                                      ng-class="{'glyphicon-chevron-down': !stop.showDepartures, 'glyphicon-chevron-up': stop.showDepartures}" 
+                                                      aria-hidden="true">
+                                                </span>
+                                            </p>
+                                            <p ng-repeat="departure in stop.departures" ng-show="stop.showDepartures">
+                                                <b>{{departure.directionName}}</b>
+                                                {{departure.scheduledDepartureUtc | date : "HH:mma"}}
                                             </p>
                                         </div>
                                     </div>

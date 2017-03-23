@@ -345,6 +345,7 @@
     <Content Include="Scripts\app\departure\departureService.js" />
     <Content Include="Scripts\app\home\HomeCtrl.js" />
     <Content Include="AngularViews\_home.html" />
+    <Content Include="Scripts\app\shared\filters.js" />
     <Content Include="Scripts\app\stop\stopService.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
