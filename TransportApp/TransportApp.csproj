@@ -313,34 +313,28 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
-    <Content Include="Content\angular-material.css" />
-    <Content Include="Content\angular-material.layout-attributes.css" />
-    <Content Include="Content\angular-material.layout-attributes.min.css" />
-    <Content Include="Content\angular-material.layouts.css" />
-    <Content Include="Content\angular-material.layouts.ie_fixes.css" />
-    <Content Include="Content\angular-material.layouts.min.css" />
-    <Content Include="Content\angular-material.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Scripts\angular-animate\angular-animate.js" />
-    <Content Include="Scripts\angular-animate\angular-animate.min.js" />
-    <Content Include="Scripts\angular-aria\angular-aria.js" />
-    <Content Include="Scripts\angular-aria\angular-aria.min.js" />
-    <Content Include="Scripts\angular-material\angular-material-mocks.js" />
-    <Content Include="Scripts\angular-material\angular-material.js" />
-    <Content Include="Scripts\angular-material\angular-material.min.js" />
-    <Content Include="Scripts\angular-messages.js" />
-    <Content Include="Scripts\angular-messages.min.js" />
-    <Content Include="Scripts\angular-mocks.js" />
-    <Content Include="Scripts\angular-ui-router.js" />
-    <Content Include="Scripts\angular-ui-router.min.js" />
-    <Content Include="Scripts\angular.js" />
-    <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\angular-ui-router\release\angular-ui-router.js" />
+    <Content Include="Scripts\angular-ui-router\release\angular-ui-router.min.js" />
+    <Content Include="Scripts\angular-ui-router\src\common.js" />
+    <Content Include="Scripts\angular-ui-router\src\resolve.js" />
+    <Content Include="Scripts\angular-ui-router\src\state.js" />
+    <Content Include="Scripts\angular-ui-router\src\stateDirectives.js" />
+    <Content Include="Scripts\angular-ui-router\src\stateFilters.js" />
+    <Content Include="Scripts\angular-ui-router\src\templateFactory.js" />
+    <Content Include="Scripts\angular-ui-router\src\urlMatcherFactory.js" />
+    <Content Include="Scripts\angular-ui-router\src\urlRouter.js" />
+    <Content Include="Scripts\angular-ui-router\src\view.js" />
+    <Content Include="Scripts\angular-ui-router\src\viewDirective.js" />
+    <Content Include="Scripts\angular-ui-router\src\viewScroll.js" />
+    <Content Include="Scripts\angular\angular-csp.css" />
     <Content Include="Scripts\angular\angular.js" />
     <Content Include="Scripts\angular\angular.min.js" />
+    <Content Include="Scripts\angular\index.js" />
     <Content Include="Scripts\app\app.js" />
     <Content Include="Scripts\app\departure\departureService.js" />
     <Content Include="Scripts\app\home\HomeCtrl.js" />
@@ -374,10 +368,24 @@
     <Content Include="PtvApi.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\angular-aria\angular-aria.min.js.map" />
-    <Content Include="Scripts\angular-animate\angular-animate.min.js.map" />
-    <Content Include="Scripts\angular.min.js.map" />
-    <Content Include="Scripts\angular-messages.min.js.map" />
+    <None Include=".bin\bower.cmd" />
+    <None Include=".bin\git.cmd" />
+    <None Include=".bin\node.cmd" />
+    <Content Include="bower.json" />
+    <Content Include=".bowerrc" />
+    <Content Include="Scripts\angular-ui-router\.bower.json" />
+    <Content Include="Scripts\angular-ui-router\bower.json" />
+    <Content Include="Scripts\angular-ui-router\CHANGELOG.md" />
+    <Content Include="Scripts\angular-ui-router\CONTRIBUTING.md" />
+    <Content Include="Scripts\angular-ui-router\LICENSE" />
+    <Content Include="Scripts\angular-ui-router\README.md" />
+    <Content Include="Scripts\angular\.bower.json" />
+    <Content Include="Scripts\angular\angular.min.js.gzip" />
+    <Content Include="Scripts\angular\angular.min.js.map" />
+    <Content Include="Scripts\angular\bower.json" />
+    <Content Include="Scripts\angular\LICENSE.md" />
+    <Content Include="Scripts\angular\package.json" />
+    <Content Include="Scripts\angular\README.md" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -389,8 +397,6 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\smart-table.js" />
-    <Content Include="Scripts\smart-table.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -407,7 +413,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Layout - Backup.cshtml" />
-    <Content Include="Scripts\smart-table.min.js.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

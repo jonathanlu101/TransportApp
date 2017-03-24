@@ -12,14 +12,15 @@ namespace TransportApp
             bundles.Add(new Bundle("~/bundles/lib").Include(
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/angular/angular.js",
-                        "~/Scripts/angular-ui-router.js",
-                        "~/Scripts/angular-messages.js",
+                        "~/Scripts/angular-ui-router/release/angular-ui-router.js",
                         "~/Scripts/angular-aria/angular-aria.js",
                         "~/Scripts/angular-animate/angular-animate.js",
+                        "~/Scripts/angular-messages/angular-messages.js",
                         "~/Scripts/angular-material/angular-material.js",
+                        "~/Scripts/angular-smart-table/dist/smart-table.js",
                         "~/Scripts/bootstrap.js",
-                        "~/Scripts/respond.js",
-                        "~/Scripts/smart-table.js")
+                        "~/Scripts/respond.js"
+                        )
                         .IncludeDirectory("~/Scripts/app", "*.js", true));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
@@ -36,7 +37,7 @@ namespace TransportApp
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/angular-material.css",
+                      "~/Scripts/angular-material/angular-material.css",
                       "~/Content/site.css"));
         }
     }
