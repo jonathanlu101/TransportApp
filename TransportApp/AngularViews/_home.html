@@ -29,12 +29,13 @@
                                                 <tbody>
                                                     <tr ng-repeat="departure in stop.displayedDepartures">
                                                         <td>{{departure.directionName}}</td>
-                                                        <td>{{departure.scheduledDepartureUtc | date : "HH:mma"}}</td>
+                                                        <td>{{departure.scheduledDepartureUtc | date : "h:mma"}}</td>
+                                                        <td>{{departure.scheduledDepartureUtc | timeFromNow}}</td>
                                                     </tr>
                                                 </tbody>
                                                 <tfoot>
                                                     <tr>
-                                                        <td colspan="2" class="text-center">
+                                                        <td colspan="3" class="text-center">
                                                             <div st-pagination="" st-items-by-page="4" st-displayed-pages="7"></div>
                                                         </td>
                                                     </tr>
@@ -68,12 +69,13 @@
                                                 <tbody>
                                                     <tr ng-repeat="departure in stop.displayedDepartures">
                                                         <td>{{departure.directionName}}</td>
-                                                        <td>{{departure.scheduledDepartureUtc | date : "HH:mma"}}</td>
+                                                        <td>{{departure.scheduledDepartureUtc | date : "h:mma"}}</td>
+                                                        <td>{{departure.scheduledDepartureUtc | timeFromNow}}</td>
                                                     </tr>
                                                 </tbody>
                                                 <tfoot>
                                                     <tr>
-                                                        <td colspan="2" class="text-center">
+                                                        <td colspan="3" class="text-center">
                                                             <div st-pagination="" st-items-by-page="4" st-displayed-pages="7"></div>
                                                         </td>
                                                     </tr>
@@ -107,12 +109,13 @@
                                                 <tbody>
                                                     <tr ng-repeat="departure in stop.displayedDepartures">
                                                         <td>{{departure.directionName}}</td>
-                                                        <td>{{departure.scheduledDepartureUtc | date : "HH:mma"}}</td>
+                                                        <td>{{departure.scheduledDepartureUtc | date : "h:mma"}}</td>
+                                                        <td>{{departure.scheduledDepartureUtc | timeFromNow}}</td>
                                                     </tr>
                                                 </tbody>
                                                 <tfoot>
                                                     <tr>
-                                                        <td colspan="2" class="text-center">
+                                                        <td colspan="3" class="text-center">
                                                             <div st-pagination="" st-items-by-page="4" st-displayed-pages="7"></div>
                                                         </td>
                                                     </tr>
