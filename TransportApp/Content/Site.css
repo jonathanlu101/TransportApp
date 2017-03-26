@@ -23,12 +23,14 @@ textarea {
 }
 
 
-/* Nearby Stops */
+/* Left Section */
 
-#nearby-stops {
+#left-section {
     border: 1px solid #EEEEEE;
     padding: 2%;
 }
+
+/* Nearby Stops */
 
 #nearby-stops h4{
     margin-top: 0;

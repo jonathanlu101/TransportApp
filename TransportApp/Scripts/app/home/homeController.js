@@ -57,10 +57,25 @@
         vm.getFavouriteRoutes = function() {
 
             favouriteService.getRoutes().then(function (response) {
-                console.log(response.data);
                 vm.favouriteRoutes = response.data;
             }, function (response) {
                 alert("Couldn't get your favourite routes");
+            });
+        }
+
+        vm.favouriteNearbyDeparture = function (stop, departure) {
+            var newRouteData = {
+                stopId: stop.stopId,
+                stopName: stop.stopName,
+                routeId: departure.routeId,
+                routeName: departure.routeName,
+                routeNumber: departure.routeNumber,
+                routeType: departure.routeType,
+                directionId: departure.directionId,
+                directionName: departure.directionName
+            };
+            favouriteService.createRoute(newRouteData).then(function (response) {
+                vm.favouriteRoutes.push(response.data);
             });
         }
 

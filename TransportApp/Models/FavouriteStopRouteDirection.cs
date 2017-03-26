@@ -18,6 +18,7 @@ namespace TransportApp.Models
         public string StopName { get; set; }
         [Required]
         public int RouteId { get; set; }
+        public string RouteNumber { get; set; }
         [Required]
         public string RouteName { get; set; }
         [Required]

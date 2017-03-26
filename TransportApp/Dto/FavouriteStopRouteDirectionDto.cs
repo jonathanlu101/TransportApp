@@ -14,6 +14,7 @@ namespace TransportApp.Dto
         public int RouteId { get; set; }
         public string RouteName { get; set; }
         public int? RouteType { get; set; }
+        public string RouteNumber { get; set; }
         public int DirectionId { get; set; }
         public string DirectionName { get; set; }
     }
