@@ -42,18 +42,19 @@ namespace TransportApp.Controllers
                 var detailedDeparture = Mapper.Map<V3Departure, DepartureDto>(departure);
                 //Add Route Details to departure
                 var routeId = departure.RouteId.Value;
-                V3Route routeDetail;
+                V3Route route;
                 if (!routesDetail.Keys.Contains(routeId))
                 {
-                    routeDetail = routesApi.RoutesRouteFromId(routeId).Route;
-                    routesDetail.Add(routeId, routeDetail);
+                    route = routesApi.RoutesRouteFromId(routeId).Route;
+                    routesDetail.Add(routeId, route);
                 }
                 else
                 {
-                    routeDetail = routesDetail[routeId];
+                    route = routesDetail[routeId];
                 }
-                detailedDeparture.RouteName = routeDetail.RouteName;
-                detailedDeparture.RouteNumber = routeDetail.RouteNumber;
+                detailedDeparture.RouteName = route.RouteName;
+                detailedDeparture.RouteNumber = route.RouteNumber;
+                detailedDeparture.RouteType = route.RouteType.Value;
 
                 //Add Directions Details to departure
                 var directionId = departure.DirectionId.Value;

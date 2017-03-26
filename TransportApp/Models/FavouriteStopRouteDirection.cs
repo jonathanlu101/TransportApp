@@ -21,6 +21,8 @@ namespace TransportApp.Models
         [Required]
         public string RouteName { get; set; }
         [Required]
+        public int? RouteType { get; set; }
+        [Required]
         public int DirectionId { get; set; }
         [Required]
         public string DirectionName { get; set; }

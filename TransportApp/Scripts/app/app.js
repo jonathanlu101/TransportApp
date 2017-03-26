@@ -4,29 +4,36 @@
     var myApp = angular.module('TransportApp', ['ui.router', 'ngAnimate', 'ngMessages', 'ngMaterial', 'smart-table', 'LocalStorageModule']);
 
    
-    myApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function ($stateProvider, $urlRouterProvider, $locationProvider) {
+    myApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
 
-            $locationProvider.html5Mode(true);
+        $locationProvider.html5Mode(true);
 
-            $stateProvider.state('home', {
-                url: '/home',
-                templateUrl: 'angularviews/_home.html',
-                controller: 'homeController',
-                controllerAs: 'vm'
-            });
+        $httpProvider.interceptors.push('authInterceptorService');
 
-            $stateProvider.state('login', {
-                url: '/login',
-                templateUrl: 'angularviews/_login.html',
-                controller: 'loginController',
-                controllerAs: 'vm'
-            });
+        $stateProvider.state('home', {
+            url: '/home',
+            templateUrl: 'angularviews/_home.html',
+            controller: 'homeController',
+            controllerAs: 'vm'
+        });
 
-            $urlRouterProvider.otherwise('home');
+        $stateProvider.state('login', {
+            url: '/login',
+            templateUrl: 'angularviews/_login.html',
+            controller: 'loginController',
+            controllerAs: 'vm'
+        });
+
+        $urlRouterProvider.otherwise('home');
     }]);
 
-    myApp.run(['authService', function (authService) {
+    myApp.run(['authService', '$rootScope', function (authService, $rootScope) {
         authService.fillAuthData();
+
+        $rootScope.$on('unauthorized', () => {
+            $state.go('login');
+        });
+
     }]);
 
 })();

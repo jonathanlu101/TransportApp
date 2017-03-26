@@ -13,6 +13,7 @@ namespace TransportApp.Dto
         public string StopName { get; set; }
         public int RouteId { get; set; }
         public string RouteName { get; set; }
+        public int? RouteType { get; set; }
         public int DirectionId { get; set; }
         public string DirectionName { get; set; }
     }

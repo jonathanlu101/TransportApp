@@ -26,20 +26,10 @@ namespace TransportApp.Controllers
             _apiKey = ConfigurationManager.AppSettings["apiKey"];
         }
 
-        //[Route("nearby")]
-        //public IHttpActionResult GetNearbyStops(float latitude, float longitude, string route_types = null, int? max_distance = null, int? max_results = null)
-        //{
-        //    List<int?> route_types_list = route_types.Split(',').Select(x => (int?) int.Parse(x)).ToList();
-        //    var stopApi = new StopsApi(new PTVApi.Client.Configuration(new ApiClient("http://timetableapi.ptv.vic.gov.au", _devId, _apiKey)));
-        //    var response = stopApi.StopsStopsByGeolocation(latitude, longitude, maxDistance: max_distance, maxResults: max_results, routeTypes: route_types_list);
-        //    return Ok(response.Stops);
-        //}
-
         [Route("nearby")]
         public IHttpActionResult GetNearbyStops(float latitude, float longitude)
         {
-            var response = new NearbyStopsDto();
-
+            var response = new List<StopsCollectionDto>();
             var stopApi = new StopsApi(new PTVApi.Client.Configuration(new ApiClient("http://timetableapi.ptv.vic.gov.au", _devId, _apiKey)));
 
             var trainStopsResponse = stopApi.StopsStopsByGeolocation(latitude,
@@ -47,19 +37,36 @@ namespace TransportApp.Controllers
                 maxDistance: 10000,
                 maxResults: 5,
                 routeTypes: new List<int?> { 0 }).Stops;
-            response.TrainStops = Mapper.Map<List<V3StopGeosearch>, List<StopDto>>(trainStopsResponse);
+            var trainStopsCollectionDto = new StopsCollectionDto()
+            {
+                RouteType = 0,
+                Stops = Mapper.Map<List<V3StopGeosearch>, List<StopDto>>(trainStopsResponse)
+            };
+            response.Add(trainStopsCollectionDto);
+
             var tramStopsResponse = stopApi.StopsStopsByGeolocation(latitude,
                 longitude,
                 maxDistance: 10000,
                 maxResults: 5,
                 routeTypes: new List<int?> { 1 }).Stops;
-            response.TramStops = Mapper.Map<List<V3StopGeosearch>, List<StopDto>>(tramStopsResponse);
+            var tramsStopsCollectionDto = new StopsCollectionDto()
+            {
+                RouteType = 1,
+                Stops = Mapper.Map<List<V3StopGeosearch>, List<StopDto>>(tramStopsResponse)
+            };
+            response.Add(tramsStopsCollectionDto);
+
             var busStopsResponse= stopApi.StopsStopsByGeolocation(latitude,
                 longitude,
                 maxDistance: 10000,
                 maxResults: 5,
                 routeTypes: new List<int?> { 2 }).Stops;
-            response.BusStops = Mapper.Map<List<V3StopGeosearch>, List<StopDto>>(busStopsResponse);
+            var busStopsCollectionDto = new StopsCollectionDto()
+            {
+                RouteType = 2,
+                Stops = Mapper.Map<List<V3StopGeosearch>, List<StopDto>>(busStopsResponse)
+            };
+            response.Add(busStopsCollectionDto);
 
             return Ok(response);
         }

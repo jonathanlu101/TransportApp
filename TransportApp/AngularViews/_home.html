@@ -3,17 +3,19 @@
         <div id="nearby-stops">
             <h2>Nearby Stops</h2>
             <button class="btn btn-primary" ng-click="vm.getNearbyStops()">Get My Location</button>
-            <div ng-cloak>
-                <md-content>
+            <md-content ng-cloak>
                     <md-tabs md-dynamic-height md-border-bottom>
-                        <md-tab>
+                        <md-tab ng-repeat="stopCollection in vm.nearbyStopCollections">
                             <md-tab-label>
-                                <h4><i class="fa fa-train"></i> Train</h4>
+                                <h4>
+                                    <i class="fa" ng-class="{ 'fa-train': stopCollection.routeType == 0, 'fa-subway': stopCollection.routeType == 1, 'fa-bus': stopCollection.routeType == 2 }"></i>
+                                    {{stopCollection.routeTypeName}}
+                                </h4>
                             </md-tab-label>
                             <md-tab-body>
                                 <md-content class="md-padding">
-                                    <div class="list-group" ng-show="vm.nearbyStops.trainStops">
-                                        <div class="list-group-item" ng-repeat="stop in vm.nearbyStops.trainStops">
+                                    <div class="list-group">
+                                        <div class="list-group-item" ng-repeat="stop in stopCollection.stops">
                                             <h4 ng-click="vm.toogleStopDepartures(stop)">
                                                 {{stop.stopName}}  ({{stop.stopDistance | number: 0}}m)
                                                 <span class="glyphicon"
@@ -46,87 +48,17 @@
                                 </md-content>
                             </md-tab-body>
                         </md-tab>
-                        <md-tab>
-                            <md-tab-label>
-                                <h4><i class="fa fa-bus"></i> Bus</h4>
-                            </md-tab-label>
-                            <md-tab-body>
-                                <md-content class="md-padding">
-                                    <div class="list-group" ng-show="vm.nearbyStops.busStops">
-                                        <div href="#" class="list-group-item" ng-repeat="stop in vm.nearbyStops.busStops">
-                                            <h4 ng-click="vm.toogleStopDepartures(stop)">
-                                                {{stop.stopName}}  ({{stop.stopDistance | number: 0}}m)
-                                                <span class="glyphicon"
-                                                      ng-class="{'glyphicon-chevron-down': !stop.showDepartures, 'glyphicon-chevron-up': stop.showDepartures}"
-                                                      aria-hidden="true">
-                                                </span>
-                                            </h4>
-                                            <table class="table table-striped"
-                                                   ng-show="stop.departures && stop.showDepartures"
-                                                   st-safe-src="stop.departures"
-                                                   st-table="stop.displayedDepartures">
-                                                <tbody>
-                                                    <tr ng-repeat="departure in stop.displayedDepartures">
-                                                        <td>{{departure.directionName}}</td>
-                                                        <td>{{departure.scheduledDepartureUtc | date : "h:mma"}}</td>
-                                                        <td>{{departure.scheduledDepartureUtc | timeFromNow}}</td>
-                                                    </tr>
-                                                </tbody>
-                                                <tfoot>
-                                                    <tr>
-                                                        <td colspan="3" class="text-center">
-                                                            <div st-pagination="" st-items-by-page="4" st-displayed-pages="7"></div>
-                                                        </td>
-                                                    </tr>
-                                                </tfoot>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </md-content>
-                            </md-tab-body>
-                        </md-tab>
-                        <md-tab>
-                            <md-tab-label>
-                                <h4><i class="fa fa-subway"></i> Tram</h4>
-                            </md-tab-label>
-                            <md-tab-body>
-                                <md-content class="md-padding">
-                                    <div class="list-group" ng-show="vm.nearbyStops.tramStops">
-                                        <div href="#" class="list-group-item" ng-repeat="stop in vm.nearbyStops.tramStops">
-                                            <h4 ng-click="vm.toogleStopDepartures(stop)">
-                                                {{stop.stopName}}  ({{stop.stopDistance | number: 0}}m)
-                                                <span class="glyphicon"
-                                                      ng-class="{'glyphicon-chevron-down': !stop.showDepartures, 'glyphicon-chevron-up': stop.showDepartures}"
-                                                      aria-hidden="true">
-                                                </span>
-                                            </h4>
-                                            <table class="table table-striped"
-                                                   ng-show="stop.departures && stop.showDepartures"
-                                                   st-safe-src="stop.departures"
-                                                   st-table="stop.displayedDepartures">
-                                                <tbody>
-                                                    <tr ng-repeat="departure in stop.displayedDepartures">
-                                                        <td>{{departure.directionName}}</td>
-                                                        <td>{{departure.scheduledDepartureUtc | date : "h:mma"}}</td>
-                                                        <td>{{departure.scheduledDepartureUtc | timeFromNow}}</td>
-                                                    </tr>
-                                                </tbody>
-                                                <tfoot>
-                                                    <tr>
-                                                        <td colspan="3" class="text-center">
-                                                            <div st-pagination="" st-items-by-page="4" st-displayed-pages="7"></div>
-                                                        </td>
-                                                    </tr>
-                                                </tfoot>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </md-content>
-                            </md-tab-body>
-                        </md-tab>
                     </md-tabs>
                 </md-content>
-            </div>
+        </div>
+        <div id="favourite-routes">
+            <h2>Favourite Routes</h2>
+            <ul class="list-group">
+                <li class="list-group-item" ng-repeat="route in vm.favouriteRoutes">
+                    <i class="fa fa-bus" ng-class="{ 'fa-train': route.routeType == 0, 'fa-subway': route.routeType == 1, 'fa-bus': route.routeType == 2 }"></i>
+                    {{route.stopName}}
+                </li>
+            </ul>
         </div>
     </div>
 </div>

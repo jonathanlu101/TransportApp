@@ -5,10 +5,23 @@
         .module('TransportApp')
         .controller('homeController', homeController);
 
-    homeController.$inject = ['$location', 'stopService', 'departureService'];
+    homeController.$inject = ['$location', 'stopService', 'departureService', 'favouriteService'];
 
-    function homeController($location, stopService, departureService) {
+    function homeController($location, stopService, departureService, favouriteService) {
         var vm = this;
+
+        function addDetailsToStopCollection(stopCollections) {
+            var nameByRouteTypeId = {
+                0: "Train",
+                1: "Tram",
+                2: "Bus"
+            }
+
+            for (var i = 0; i < stopCollections.length; i++) {
+                let stopCollection = stopCollections[i];
+                stopCollection.routeTypeName = nameByRouteTypeId[stopCollection.routeType];
+            }
+        }
 
         vm.getNearbyStops = function () {
             navigator.geolocation.getCurrentPosition(function (position) {
@@ -17,8 +30,9 @@
                 let longitude = position.coords.longitude;
 
                 stopService.getNearbyStops(latitude, longitude).then(function (response) {
-                        vm.nearbyStops = response.data;
-                    });
+                    vm.nearbyStopCollections = response.data;
+                    addDetailsToStopCollection(vm.nearbyStopCollections);
+                });
             }, function () {
                 alert("Couldn't grab your location");
             });
@@ -39,5 +53,17 @@
                 stop.showDepartures = false;
             }
         }
+
+        vm.getFavouriteRoutes = function() {
+
+            favouriteService.getRoutes().then(function (response) {
+                console.log(response.data);
+                vm.favouriteRoutes = response.data;
+            }, function (response) {
+                alert("Couldn't get your favourite routes");
+            });
+        }
+
+        vm.getFavouriteRoutes();
     }
 })();

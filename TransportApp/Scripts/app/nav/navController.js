@@ -17,7 +17,5 @@
             authService.logOut();
             $state.go('home');
         }
-
-        console.log(vm.authentication);
     }
 })();

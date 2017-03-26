@@ -15,6 +15,7 @@ namespace TransportApp.Dto
         public DateTime? ScheduledDepartureUtc { get; set; }
 
         //Added properties
+        public int RouteType { get; set; }
         public string RouteName { get; set; }
         public string RouteNumber { get; set; }
         public string DirectionName { get; set; }

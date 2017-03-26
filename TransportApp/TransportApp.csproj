@@ -245,6 +245,7 @@
     <Compile Include="Dto\DepartureDto.cs" />
     <Compile Include="Dto\FavouriteStopRouteDirectionDto.cs" />
     <Compile Include="Dto\NearbyStopsDto.cs" />
+    <Compile Include="Dto\StopsCollectionDto.cs" />
     <Compile Include="Dto\StopDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -264,6 +265,14 @@
     <Compile Include="Migrations\201703241335159_ModifyFavouriteStopRouteDirection.cs" />
     <Compile Include="Migrations\201703241335159_ModifyFavouriteStopRouteDirection.Designer.cs">
       <DependentUpon>201703241335159_ModifyFavouriteStopRouteDirection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703260921404_AddRouteTypeToFavouriteStopRouteDirectionDto.cs" />
+    <Compile Include="Migrations\201703260921404_AddRouteTypeToFavouriteStopRouteDirectionDto.Designer.cs">
+      <DependentUpon>201703260921404_AddRouteTypeToFavouriteStopRouteDirectionDto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703261032266_ModfyFavouriteStopRouteDirectionDto.cs" />
+    <Compile Include="Migrations\201703261032266_ModfyFavouriteStopRouteDirectionDto.Designer.cs">
+      <DependentUpon>201703261032266_ModfyFavouriteStopRouteDirectionDto.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -360,10 +369,12 @@
     <Content Include="Scripts\app\app.js" />
     <Content Include="Scripts\app\auth\authService.js" />
     <Content Include="Scripts\app\departure\departureService.js" />
+    <Content Include="Scripts\app\favourite\favouriteService.js" />
     <Content Include="Scripts\app\home\homeController.js" />
     <Content Include="AngularViews\_home.html" />
     <Content Include="Scripts\app\login\loginController.js" />
     <Content Include="Scripts\app\nav\navController.js" />
+    <Content Include="Scripts\app\shared\authInterceptorService.js" />
     <Content Include="Scripts\app\shared\filters.js" />
     <Content Include="Scripts\app\stop\stopService.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -472,6 +483,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703241335159_ModifyFavouriteStopRouteDirection.resx">
       <DependentUpon>201703241335159_ModifyFavouriteStopRouteDirection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703260921404_AddRouteTypeToFavouriteStopRouteDirectionDto.resx">
+      <DependentUpon>201703260921404_AddRouteTypeToFavouriteStopRouteDirectionDto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703261032266_ModfyFavouriteStopRouteDirectionDto.resx">
+      <DependentUpon>201703261032266_ModfyFavouriteStopRouteDirectionDto.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

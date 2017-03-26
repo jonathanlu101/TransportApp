@@ -28,7 +28,7 @@ namespace TransportApp.Controllers
             _context.Dispose();
         }
 
-        [Route("stoproutedirections")]
+        [Route("routes")]
         [HttpGet]
         public IHttpActionResult GetFavouriteStopRouteDirections()
         {
@@ -38,10 +38,12 @@ namespace TransportApp.Controllers
                               where favourite.UserId == userId
                               select favourite).ToList();
 
-            return Ok(favourites);
+            var favouriteDtos = favourites.Select(x => Mapper.Map<FavouriteStopRouteDirection, FavouriteStopRouteDirectionDto>(x));
+
+            return Ok(favouriteDtos);
         }
 
-        [Route("stoproutedirections")]
+        [Route("routes")]
         [HttpPost]
         public IHttpActionResult CreateFavouriteStopRouteDirections(FavouriteStopRouteDirectionDto newFavouriteDto)
         {
