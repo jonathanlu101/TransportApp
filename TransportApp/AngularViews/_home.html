@@ -2,7 +2,7 @@
     <div class="col-md-6">
         <div id="nearby-stops">
             <h2>Nearby Stops</h2>
-            <button class="btn btn-primary" ng-click="homeVm.getNearbyStops()">Get My Location</button>
+            <button class="btn btn-primary" ng-click="vm.getNearbyStops()">Get My Location</button>
             <div ng-cloak>
                 <md-content>
                     <md-tabs md-dynamic-height md-border-bottom>
@@ -12,16 +12,15 @@
                             </md-tab-label>
                             <md-tab-body>
                                 <md-content class="md-padding">
-                                    <div class="list-group" ng-show="homeVm.nearbyStops.trainStops">
-                                        <div class="list-group-item" ng-repeat="stop in homeVm.nearbyStops.trainStops">
-                                            <h4>{{stop.stopName}}</h4>
-                                            <p ng-click="homeVm.toogleStopDepartures(stop)">
-                                                {{stop.stopDistance | number: 0}}m
-                                                <span class="glyphicon" 
-                                                      ng-class="{'glyphicon-chevron-down': !stop.showDepartures, 'glyphicon-chevron-up': stop.showDepartures}" 
-                                                      aria-hidden="true">
+                                    <div class="list-group" ng-show="vm.nearbyStops.trainStops">
+                                        <div class="list-group-item" ng-repeat="stop in vm.nearbyStops.trainStops">
+                                            <h4 ng-click="vm.toogleStopDepartures(stop)">
+                                                {{stop.stopName}}  ({{stop.stopDistance | number: 0}}m)
+                                                <span class="glyphicon"
+                                                        ng-class="{'glyphicon-chevron-down': !stop.showDepartures, 'glyphicon-chevron-up': stop.showDepartures}"
+                                                        aria-hidden="true">
                                                 </span>
-                                            </p>
+                                            </h4>
                                             <table class="table table-striped" 
                                                    ng-show="stop.departures && stop.showDepartures"
                                                    st-safe-src="stop.departures"
@@ -31,11 +30,12 @@
                                                         <td>{{departure.directionName}}</td>
                                                         <td>{{departure.scheduledDepartureUtc | date : "h:mma"}}</td>
                                                         <td>{{departure.scheduledDepartureUtc | timeFromNow}}</td>
+                                                        <td><a class="btn btn-default"><span class="glyphicon glyphicon-star"></span></a></td>
                                                     </tr>
                                                 </tbody>
                                                 <tfoot>
                                                     <tr>
-                                                        <td colspan="3" class="text-center">
+                                                        <td colspan="4" class="text-center">
                                                             <div st-pagination="" st-items-by-page="4" st-displayed-pages="7"></div>
                                                         </td>
                                                     </tr>
@@ -52,16 +52,15 @@
                             </md-tab-label>
                             <md-tab-body>
                                 <md-content class="md-padding">
-                                    <div class="list-group" ng-show="homeVm.nearbyStops.busStops">
-                                        <div href="#" class="list-group-item" ng-repeat="stop in homeVm.nearbyStops.busStops">
-                                            <h4>{{stop.stopName}}</h4>
-                                            <p ng-click="homeVm.toogleStopDepartures(stop)">
-                                                {{stop.stopDistance | number: 0}}m
+                                    <div class="list-group" ng-show="vm.nearbyStops.busStops">
+                                        <div href="#" class="list-group-item" ng-repeat="stop in vm.nearbyStops.busStops">
+                                            <h4 ng-click="vm.toogleStopDepartures(stop)">
+                                                {{stop.stopName}}  ({{stop.stopDistance | number: 0}}m)
                                                 <span class="glyphicon"
                                                       ng-class="{'glyphicon-chevron-down': !stop.showDepartures, 'glyphicon-chevron-up': stop.showDepartures}"
                                                       aria-hidden="true">
                                                 </span>
-                                            </p>
+                                            </h4>
                                             <table class="table table-striped"
                                                    ng-show="stop.departures && stop.showDepartures"
                                                    st-safe-src="stop.departures"
@@ -92,16 +91,15 @@
                             </md-tab-label>
                             <md-tab-body>
                                 <md-content class="md-padding">
-                                    <div class="list-group" ng-show="homeVm.nearbyStops.tramStops">
-                                        <div href="#" class="list-group-item" ng-repeat="stop in homeVm.nearbyStops.tramStops">
-                                            <h4>{{stop.stopName}}</h4>
-                                            <p ng-click="homeVm.toogleStopDepartures(stop)">
-                                                {{stop.stopDistance | number: 0}}m
+                                    <div class="list-group" ng-show="vm.nearbyStops.tramStops">
+                                        <div href="#" class="list-group-item" ng-repeat="stop in vm.nearbyStops.tramStops">
+                                            <h4 ng-click="vm.toogleStopDepartures(stop)">
+                                                {{stop.stopName}}  ({{stop.stopDistance | number: 0}}m)
                                                 <span class="glyphicon"
                                                       ng-class="{'glyphicon-chevron-down': !stop.showDepartures, 'glyphicon-chevron-up': stop.showDepartures}"
                                                       aria-hidden="true">
                                                 </span>
-                                            </p>
+                                            </h4>
                                             <table class="table table-striped"
                                                    ng-show="stop.departures && stop.showDepartures"
                                                    st-safe-src="stop.departures"

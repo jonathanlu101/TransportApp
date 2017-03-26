@@ -238,17 +238,37 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DepaturesController.cs" />
+    <Compile Include="Controllers\FavouriteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StopsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Dto\DepartureDto.cs" />
+    <Compile Include="Dto\FavouriteStopRouteDirectionDto.cs" />
     <Compile Include="Dto\NearbyStopsDto.cs" />
     <Compile Include="Dto\StopDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703241207037_Init.cs" />
+    <Compile Include="Migrations\201703241207037_Init.Designer.cs">
+      <DependentUpon>201703241207037_Init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703241317305_AddUserToFavouriteStopRouteDirection.cs" />
+    <Compile Include="Migrations\201703241317305_AddUserToFavouriteStopRouteDirection.Designer.cs">
+      <DependentUpon>201703241317305_AddUserToFavouriteStopRouteDirection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703241323183_ModifyPrimaryKeyForFavouriteStopRouteDirection.cs" />
+    <Compile Include="Migrations\201703241323183_ModifyPrimaryKeyForFavouriteStopRouteDirection.Designer.cs">
+      <DependentUpon>201703241323183_ModifyPrimaryKeyForFavouriteStopRouteDirection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703241335159_ModifyFavouriteStopRouteDirection.cs" />
+    <Compile Include="Migrations\201703241335159_ModifyFavouriteStopRouteDirection.Designer.cs">
+      <DependentUpon>201703241335159_ModifyFavouriteStopRouteDirection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\FavouriteStopRouteDirection.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
@@ -312,6 +332,8 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AngularViews\_login.html" />
+    <Content Include="AngularViews\_nav.html" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -336,9 +358,12 @@
     <Content Include="Scripts\angular\angular.min.js" />
     <Content Include="Scripts\angular\index.js" />
     <Content Include="Scripts\app\app.js" />
+    <Content Include="Scripts\app\auth\authService.js" />
     <Content Include="Scripts\app\departure\departureService.js" />
-    <Content Include="Scripts\app\home\HomeCtrl.js" />
+    <Content Include="Scripts\app\home\homeController.js" />
     <Content Include="AngularViews\_home.html" />
+    <Content Include="Scripts\app\login\loginController.js" />
+    <Content Include="Scripts\app\nav\navController.js" />
     <Content Include="Scripts\app\shared\filters.js" />
     <Content Include="Scripts\app\stop\stopService.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -434,6 +459,20 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201703241207037_Init.resx">
+      <DependentUpon>201703241207037_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703241317305_AddUserToFavouriteStopRouteDirection.resx">
+      <DependentUpon>201703241317305_AddUserToFavouriteStopRouteDirection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703241323183_ModifyPrimaryKeyForFavouriteStopRouteDirection.resx">
+      <DependentUpon>201703241323183_ModifyPrimaryKeyForFavouriteStopRouteDirection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703241335159_ModifyFavouriteStopRouteDirection.resx">
+      <DependentUpon>201703241335159_ModifyFavouriteStopRouteDirection.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

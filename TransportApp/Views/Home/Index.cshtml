@@ -1,26 +1,6 @@
-﻿<div class="container body-content">
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a href="/home" class="navbar-brand">Application Name</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="/home">Home</a></li>
-                    <li><a href="/home">Help</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div ng-app="TransportApp">
-        <div ui-view>
-        </div>
-    </div>
+﻿<div class="container body-content" ng-app="TransportApp">
+    <div ng-include="'angularviews/_nav.html'"></div>
+    <div ui-view />
     <hr />
     <footer>
         <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>

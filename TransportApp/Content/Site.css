@@ -16,6 +16,13 @@ textarea {
     max-width: 280px;
 }
 
+/* General*/
+
+[ng-click] {
+    cursor: pointer;
+}
+
+
 /* Nearby Stops */
 
 #nearby-stops {

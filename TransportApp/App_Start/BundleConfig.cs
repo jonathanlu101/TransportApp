@@ -18,6 +18,7 @@ namespace TransportApp
                         "~/Scripts/angular-messages/angular-messages.js",
                         "~/Scripts/angular-material/angular-material.js",
                         "~/Scripts/angular-smart-table/dist/smart-table.js",
+                        "~/Scripts/angular-local-storage/dist/angular-local-storage.js",
                         "~/Scripts/bootstrap.js",
                         "~/Scripts/respond.js"
                         )

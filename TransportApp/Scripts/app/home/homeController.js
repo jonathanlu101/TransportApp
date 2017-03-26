@@ -3,11 +3,11 @@
 
     angular
         .module('TransportApp')
-        .controller('HomeCtrl', HomeCtrl);
+        .controller('homeController', homeController);
 
-    HomeCtrl.$inject = ['$location', 'stopService', 'departureService'];
+    homeController.$inject = ['$location', 'stopService', 'departureService'];
 
-    function HomeCtrl($location, stopService, departureService) {
+    function homeController($location, stopService, departureService) {
         var vm = this;
 
         vm.getNearbyStops = function () {
