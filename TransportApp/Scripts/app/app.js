@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    var myApp = angular.module('TransportApp', ['ui.router', 'ngAnimate', 'ngMessages', 'ngMaterial', 'smart-table', 'LocalStorageModule']);
+    var myApp = angular.module('TransportApp', ['ui.router', 'ngAnimate', 'ngMessages', 'ngMaterial', 'smart-table', 'LocalStorageModule','ui.bootstrap']);
 
    
     myApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
@@ -12,14 +12,14 @@
 
         $stateProvider.state('home', {
             url: '/home',
-            templateUrl: 'angularviews/_home.html',
+            templateUrl: 'angularviews/home/_home.html',
             controller: 'homeController',
             controllerAs: 'vm'
         });
 
         $stateProvider.state('login', {
             url: '/login',
-            templateUrl: 'angularviews/_login.html',
+            templateUrl: 'angularviews/login/_login.html',
             controller: 'loginController',
             controllerAs: 'vm'
         });

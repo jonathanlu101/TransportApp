@@ -51,3 +51,19 @@ textarea {
 #nearby-stops table {
     margin-bottom: 0;
 }
+
+/* Favourite Routes*/
+
+#favourite-routes .fa {
+    margin-right: 20px;
+}
+
+#favourite-routes .route-departures {
+    width: 90px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+#favourite-routes .show-more-btn {
+    margin-top: 5px;
+}

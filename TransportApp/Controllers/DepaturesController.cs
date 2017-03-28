@@ -29,7 +29,7 @@ namespace TransportApp.Controllers
         public IHttpActionResult GetDepaturesFromStop(int routeType, int stopId)
         {
             var departuresApi = new DeparturesApi(new PTVApi.Client.Configuration(new ApiClient("http://timetableapi.ptv.vic.gov.au", _devId, _apiKey)));
-            var depaturesResponse = departuresApi.DeparturesGetForStop(routeType, stopId, maxResults: 5);
+            var response = departuresApi.DeparturesGetForStop(routeType, stopId, maxResults: 5);
 
             List<DepartureDto> departuresResponse = new List<DepartureDto>();
             var routesApi = new RoutesApi(new PTVApi.Client.Configuration(new ApiClient("http://timetableapi.ptv.vic.gov.au", _devId, _apiKey)));
@@ -37,7 +37,7 @@ namespace TransportApp.Controllers
             Dictionary<int, V3Route> routesDetail = new Dictionary<int, V3Route>();
             Dictionary<int, string> directionsName = new Dictionary<int, string>();
 
-            foreach (V3Departure departure in depaturesResponse.Departures)
+            foreach (V3Departure departure in response.Departures)
             {
                 var detailedDeparture = Mapper.Map<V3Departure, DepartureDto>(departure);
                 //Add Route Details to departure
@@ -75,6 +75,15 @@ namespace TransportApp.Controllers
             }
 
             return Ok(departuresResponse);
+        }
+
+        [Route("route_type/{routeType}/stop/{stopId}/route/{routeId}")]
+        public IHttpActionResult GetRouteDepartures(int routeType, int stopId, string routeId, int? max_results = null, int? direction_id = null)
+        {
+            var departuresApi = new DeparturesApi(new PTVApi.Client.Configuration(new ApiClient("http://timetableapi.ptv.vic.gov.au", _devId, _apiKey)));
+            var departuresResponse = departuresApi.DeparturesGetForStopAndRoute(routeType, stopId, routeId, directionId: direction_id, maxResults: max_results);
+            var departures = Mapper.Map<List<V3Departure>, List<DepartureDto>>(departuresResponse.Departures);
+            return Ok(departures);
         }
     }
 }

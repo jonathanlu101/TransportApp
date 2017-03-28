@@ -5,9 +5,9 @@
         .module('TransportApp')
         .controller('homeController', homeController);
 
-    homeController.$inject = ['$location', 'stopService', 'departureService', 'favouriteService'];
+    homeController.$inject = ['$location', 'stopService', 'departureService', 'favouriteService','$uibModal'];
 
-    function homeController($location, stopService, departureService, favouriteService) {
+    function homeController($location, stopService, departureService, favouriteService, $uibModal) {
         var vm = this;
 
         function addDetailsToStopCollection(stopCollections) {
@@ -40,10 +40,10 @@
 
         vm.toogleStopDepartures = function (stop) {
             if (!stop.departures) {
-                departureService.getStopDepartures(stop.routeType, stop.stopId).then(function (response) {
+                departureService.getDepartures(stop.routeType, stop.stopId).then(function (response) {
                     stop.departures = response.data;
                 }, function () {
-                    alert("Couldn't get departures for Stop " + stop.stop_name);
+                    alert("Couldn't get departures for Stop " + stop.stopName);
                 });
             }
 
@@ -52,15 +52,6 @@
             } else {
                 stop.showDepartures = false;
             }
-        }
-
-        vm.getFavouriteRoutes = function() {
-
-            favouriteService.getRoutes().then(function (response) {
-                vm.favouriteRoutes = response.data;
-            }, function (response) {
-                alert("Couldn't get your favourite routes");
-            });
         }
 
         vm.favouriteNearbyDeparture = function (stop, departure) {
@@ -78,6 +69,61 @@
                 vm.favouriteRoutes.push(response.data);
             });
         }
+
+        vm.getFavouriteRoutes = function() {
+
+            favouriteService.getRoutes().then(function (response) {
+                vm.favouriteRoutes = response.data;
+            }, function (response) {
+                alert("Couldn't get your favourite routes");
+            });
+        }
+
+        vm.toogleFavouriteRouteDepartures = function (favRoute) {
+            if (!favRoute.departures) {
+                var options = {
+                    routeId: favRoute.routeId,
+                    directionId: favRoute.directionId,
+                    maxResults: 5
+                };
+                departureService.getDepartures(favRoute.routeType, favRoute.stopId, options).then(function (response) {
+                    favRoute.departures = response.data;
+                }, function () {
+                    alert("Couldn't get departures for Route " + favRoute.stopName);
+                });
+            }
+
+            if (!favRoute.showDepartures) {
+                favRoute.showDepartures = true;
+            } else {
+                favRoute.showDepartures = false;
+            }
+        }
+
+        vm.showMoreFavouriteDepartures = function (favRoute) {
+            if (favRoute.departures) {
+                var newMaxResults = favRoute.departures.length + 5;
+                var options = {
+                    routeId: favRoute.routeId,
+                    directionId: favRoute.directionId,
+                    maxResults: newMaxResults
+                };
+                departureService.getDepartures(favRoute.routeType, favRoute.stopId, options).then(function (response) {
+                    favRoute.departures = response.data;
+                }, function () {
+                    alert("Couldn't get departures for Route " + favRoute.stopName);
+                });
+            }
+        }
+
+        var modalInstance = $uibModal.open({
+            animation: true,
+            ariaLabelledBy: 'modal-title',
+            ariaDescribedBy: 'modal-body',
+            templateUrl: 'angularviews/home/_departureDetailsModal.html',
+            controller: 'departureDetailsModalController',
+            controllerAs: 'modalVm'
+        });
 
         vm.getFavouriteRoutes();
     }

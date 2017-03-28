@@ -2,7 +2,7 @@
     <div class="col-md-6" id="left-section">
         <div id="nearby-stops">
             <h2>Nearby Stops</h2>
-            <button class="btn btn-primary" ng-click="vm.getNearbyStops()">Get My Location</button>
+            <button class="btn btn-info" ng-click="vm.getNearbyStops()">Get My Location</button>
             <md-content ng-cloak>
                 <md-tabs md-dynamic-height md-border-bottom>
                     <md-tab ng-repeat="stopCollection in vm.nearbyStopCollections">
@@ -18,7 +18,7 @@
                                     <div class="list-group-item" ng-repeat="stop in stopCollection.stops">
                                         <h4 ng-click="vm.toogleStopDepartures(stop)">
                                             {{stop.stopName}}  ({{stop.stopDistance | number: 0}}m)
-                                            <span class="glyphicon"
+                                            <span class="glyphicon pull-right"
                                                   ng-class="{'glyphicon-chevron-down': !stop.showDepartures, 'glyphicon-chevron-up': stop.showDepartures}"
                                                   aria-hidden="true">
                                             </span>
@@ -54,11 +54,25 @@
         <div id="favourite-routes">
             <h2>Favourite Routes</h2>
             <ul class="list-group">
-                <li class="list-group-item" ng-repeat="route in vm.favouriteRoutes">
-                    <h4>
-                        <i class="fa" ng-class="{ 'fa-train': route.routeType == 0, 'fa-subway': route.routeType == 1, 'fa-bus': route.routeType == 2 }"></i>
-                        {{route.stopName}}
+                <li class="list-group-item" ng-repeat="favRoute in vm.favouriteRoutes">
+                    <h4 ng-click="vm.toogleFavouriteRouteDepartures(favRoute)">
+                        <i class="fa" ng-class="{ 'fa-train': favRoute.routeType == 0, 'fa-subway': favRoute.routeType == 1, 'fa-bus': favRoute.routeType == 2 }"></i>
+                        {{favRoute.stopName}} - {{favRoute.routeNumber}} {{favRoute.routeName}} 
+                        <span class="glyphicon pull-right"
+                              ng-class="{'glyphicon-chevron-down': !favRoute.showDepartures, 'glyphicon-chevron-up': favRoute.showDepartures}"
+                              aria-hidden="true">
+                        </span>
                     </h4>
+                    <div ng-show="favRoute.departures && favRoute.showDepartures">
+                        <button class="btn btn-info btn-sm route-departures" ng-repeat="departure in favRoute.departures">
+                            {{departure.scheduledDepartureUtc | date : "h:mma"}}<br />
+                            ({{departure.scheduledDepartureUtc | timeFromNow}})
+                        </button>
+                        <p class="show-more-btn text-center" ng-click="vm.showMoreFavouriteDepartures(favRoute)">
+                            Show More 
+                            <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                        </p>
+                    </div>
                 </li>
             </ul>
         </div>
