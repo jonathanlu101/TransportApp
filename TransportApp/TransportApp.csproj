@@ -242,7 +242,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StopsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
-    <Compile Include="Dto\DepartureDto.cs" />
+    <Compile Include="Dto\RouteDepartureDto.cs" />
+    <Compile Include="Dto\StopDepartureDto.cs" />
     <Compile Include="Dto\FavouriteStopRouteDirectionDto.cs" />
     <Compile Include="Dto\NearbyStopsDto.cs" />
     <Compile Include="Dto\StopsCollectionDto.cs" />

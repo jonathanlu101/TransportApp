@@ -116,14 +116,27 @@
             }
         }
 
-        var modalInstance = $uibModal.open({
-            animation: true,
-            ariaLabelledBy: 'modal-title',
-            ariaDescribedBy: 'modal-body',
-            templateUrl: 'angularviews/home/_departureDetailsModal.html',
-            controller: 'departureDetailsModalController',
-            controllerAs: 'modalVm'
-        });
+        vm.openFavouriteRouteDepartureModal = function (favRoute, departure) {
+
+            departure.directionName = favRoute.directionName;
+            departure.routeName = favRoute.routeName;
+            departure.routeNumber = favRoute.routeNumber;
+            departure.stopName = favRoute.stopName;
+
+            var modalInstance = $uibModal.open({
+                animation: true,
+                ariaLabelledBy: 'modal-title',
+                ariaDescribedBy: 'modal-body',
+                templateUrl: 'angularviews/home/_departureDetailsModal.html',
+                controller: 'departureDetailsModalController',
+                controllerAs: 'modalVm',
+                resolve: {
+                    departure: function () {
+                        return departure;
+                    }
+                }
+            });
+        }
 
         vm.getFavouriteRoutes();
     }

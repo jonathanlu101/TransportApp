@@ -26,9 +26,7 @@
                 queryString = queryString + `direction_id=${options.directionId}&`;
             if (options.maxResults)
                 queryString = queryString + `max_results=${options.maxResults}&`;
-                
-            console.log(queryString);
-
+              
             return $http.get(queryString);
         }
     }

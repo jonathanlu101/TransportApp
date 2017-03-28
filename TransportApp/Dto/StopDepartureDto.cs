@@ -5,7 +5,7 @@ using System.Web;
 
 namespace TransportApp.Dto
 {
-    public class DepartureDto
+    public class StopDepartureDto
     {
         //Mapped properties
         public int? RouteId { get; set; }

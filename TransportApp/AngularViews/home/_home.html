@@ -64,7 +64,7 @@
                         </span>
                     </h4>
                     <div ng-show="favRoute.departures && favRoute.showDepartures">
-                        <button class="btn btn-info btn-sm route-departures" ng-repeat="departure in favRoute.departures">
+                        <button class="btn btn-info btn-sm route-departures" ng-repeat="departure in favRoute.departures" ng-click="vm.openFavouriteRouteDepartureModal(favRoute, departure)">
                             {{departure.scheduledDepartureUtc | date : "h:mma"}}<br />
                             ({{departure.scheduledDepartureUtc | timeFromNow}})
                         </button>
