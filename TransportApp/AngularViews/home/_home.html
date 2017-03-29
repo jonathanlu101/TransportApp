@@ -51,30 +51,6 @@
                 </md-tabs>
             </md-content>
         </div>
-        <div id="favourite-routes">
-            <h2>Favourite Routes</h2>
-            <ul class="list-group">
-                <li class="list-group-item" ng-repeat="favRoute in vm.favouriteRoutes">
-                    <h4 ng-click="vm.toogleFavouriteRouteDepartures(favRoute)">
-                        <i class="fa" ng-class="{ 'fa-train': favRoute.routeType == 0, 'fa-subway': favRoute.routeType == 1, 'fa-bus': favRoute.routeType == 2 }"></i>
-                        {{favRoute.stopName}} - {{favRoute.routeNumber}} {{favRoute.routeName}} 
-                        <span class="glyphicon pull-right"
-                              ng-class="{'glyphicon-chevron-down': !favRoute.showDepartures, 'glyphicon-chevron-up': favRoute.showDepartures}"
-                              aria-hidden="true">
-                        </span>
-                    </h4>
-                    <div ng-show="favRoute.departures && favRoute.showDepartures">
-                        <button class="btn btn-info btn-sm route-departures" ng-repeat="departure in favRoute.departures" ng-click="vm.openFavouriteRouteDepartureModal(favRoute, departure)">
-                            {{departure.scheduledDepartureUtc | date : "h:mma"}}<br />
-                            ({{departure.scheduledDepartureUtc | timeFromNow}})
-                        </button>
-                        <p class="show-more-btn text-center" ng-click="vm.showMoreFavouriteDepartures(favRoute)">
-                            Show More 
-                            <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-                        </p>
-                    </div>
-                </li>
-            </ul>
-        </div>
+        <div ui-view="favouriteRoutes"></div>
     </div>
 </div>

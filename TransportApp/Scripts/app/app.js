@@ -11,10 +11,19 @@
         $httpProvider.interceptors.push('authInterceptorService');
 
         $stateProvider.state('home', {
-            url: '/home',
-            templateUrl: 'angularviews/home/_home.html',
-            controller: 'homeController',
-            controllerAs: 'vm'
+            url: '/',
+            views: {
+                '': {
+                    templateUrl: 'angularviews/home/_home.html',
+                    controller: 'homeController',
+                    controllerAs: 'vm'
+                },
+                'favouriteRoutes@home': {
+                    templateUrl: 'angularviews/home/favouriteRoutes/_favouriteRoutes.html',
+                    controller: 'favouriteRoutesController',
+                    controllerAs: 'vm'
+                }
+            }
         });
 
         $stateProvider.state('login', {
@@ -24,7 +33,7 @@
             controllerAs: 'vm'
         });
 
-        $urlRouterProvider.otherwise('home');
+        $urlRouterProvider.otherwise('/');
     }]);
 
     myApp.run(['authService', '$rootScope', function (authService, $rootScope) {

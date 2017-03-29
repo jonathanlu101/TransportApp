@@ -350,6 +350,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AngularViews\home\favouriteRoutes\_favouriteRoutes.html" />
     <Content Include="AngularViews\login\_login.html" />
     <Content Include="AngularViews\nav\_nav.html" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -888,9 +889,10 @@
     <Content Include="Scripts\app\app.js" />
     <Content Include="Scripts\app\auth\authService.js" />
     <Content Include="Scripts\app\departure\departureService.js" />
-    <Content Include="Scripts\app\favourite\favouriteService.js" />
+    <Content Include="Scripts\app\home\favouriteRoutes\favouriteRoutesController.js" />
+    <Content Include="Scripts\app\home\favouriteRoutes\favouriteService.js" />
     <Content Include="Scripts\app\home\departureDetailsModal\departureDetailsModalController.js" />
-    <Content Include="AngularViews\home\_departureDetailsModal.html" />
+    <Content Include="AngularViews\home\departureDetailsModal\_departureDetailsModal.html" />
     <Content Include="Scripts\app\home\homeController.js" />
     <Content Include="AngularViews\home\_home.html" />
     <Content Include="Scripts\app\login\loginController.js" />

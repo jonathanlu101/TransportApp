@@ -5,9 +5,9 @@
         .module('TransportApp')
         .controller('homeController', homeController);
 
-    homeController.$inject = ['$location', 'stopService', 'departureService', 'favouriteService','$uibModal'];
+    homeController.$inject = ['$location', 'stopService', 'departureService'];
 
-    function homeController($location, stopService, departureService, favouriteService, $uibModal) {
+    function homeController($location, stopService, departureService, $uibModal) {
         var vm = this;
 
         function addDetailsToStopCollection(stopCollections) {
@@ -70,74 +70,5 @@
             });
         }
 
-        vm.getFavouriteRoutes = function() {
-
-            favouriteService.getRoutes().then(function (response) {
-                vm.favouriteRoutes = response.data;
-            }, function (response) {
-                alert("Couldn't get your favourite routes");
-            });
-        }
-
-        vm.toogleFavouriteRouteDepartures = function (favRoute) {
-            if (!favRoute.departures) {
-                var options = {
-                    routeId: favRoute.routeId,
-                    directionId: favRoute.directionId,
-                    maxResults: 5
-                };
-                departureService.getDepartures(favRoute.routeType, favRoute.stopId, options).then(function (response) {
-                    favRoute.departures = response.data;
-                }, function () {
-                    alert("Couldn't get departures for Route " + favRoute.stopName);
-                });
-            }
-
-            if (!favRoute.showDepartures) {
-                favRoute.showDepartures = true;
-            } else {
-                favRoute.showDepartures = false;
-            }
-        }
-
-        vm.showMoreFavouriteDepartures = function (favRoute) {
-            if (favRoute.departures) {
-                var newMaxResults = favRoute.departures.length + 5;
-                var options = {
-                    routeId: favRoute.routeId,
-                    directionId: favRoute.directionId,
-                    maxResults: newMaxResults
-                };
-                departureService.getDepartures(favRoute.routeType, favRoute.stopId, options).then(function (response) {
-                    favRoute.departures = response.data;
-                }, function () {
-                    alert("Couldn't get departures for Route " + favRoute.stopName);
-                });
-            }
-        }
-
-        vm.openFavouriteRouteDepartureModal = function (favRoute, departure) {
-
-            departure.directionName = favRoute.directionName;
-            departure.routeName = favRoute.routeName;
-            departure.routeNumber = favRoute.routeNumber;
-            departure.stopName = favRoute.stopName;
-
-            var modalInstance = $uibModal.open({
-                animation: true,
-                ariaLabelledBy: 'modal-title',
-                ariaDescribedBy: 'modal-body',
-                templateUrl: 'angularviews/home/_departureDetailsModal.html',
-                controller: 'departureDetailsModalController',
-                controllerAs: 'modalVm',
-                resolve: {
-                    departure: function () {
-                        return departure;
-                    }
-                }
-            });
-        }
-
-        vm.getFavouriteRoutes();
     }
 })();
