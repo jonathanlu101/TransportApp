@@ -22,6 +22,25 @@ textarea {
     cursor: pointer;
 }
 
+/* Navigation - loading bar*/
+
+#loading-bar .bar {
+    background: #1839bc !important;
+}
+
+#loading-bar .peg {
+    -moz-box-shadow: #1839bc 1px 0 6px 1px !important;
+    -ms-box-shadow: #1839bc 1px 0 6px 1px !important;
+    -webkit-box-shadow: #1839bc 1px 0 6px 1px !important;
+    box-shadow: #1839bc 1px 0 6px 1px !important;
+}
+
+
+#loading-bar-spinner .spinner-icon {
+    border-top-color: #1839bc !important;
+    border-left-color: #1839bc !important;
+}
+
 
 /* Left Section */
 

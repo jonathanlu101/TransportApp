@@ -43,12 +43,11 @@
             if (!stop.departures) {
                 departureService.getDepartures(stop.routeType, stop.stopId).then(function (response) {
                     stop.departures = response.data;
+                    stop.showDepartures = true;
                 }, function () {
                     alert("Couldn't get departures for Stop " + stop.stopName);
                 });
-            }
-
-            if (!stop.showDepartures) {
+            } else if (!stop.showDepartures) {
                 stop.showDepartures = true;
             } else {
                 stop.showDepartures = false;

@@ -20,6 +20,7 @@ namespace TransportApp
                         "~/Scripts/angular-smart-table/dist/smart-table.js",
                         "~/Scripts/angular-local-storage/dist/angular-local-storage.js",
                         "~/Scripts/angular-bootstrap/ui-bootstrap-tpls.js",
+                        "~/Scripts/angular-loading-bar/build/loading-bar.js",
                         "~/Scripts/bootstrap.js",
                         "~/Scripts/respond.js"
                         )
@@ -39,8 +40,11 @@ namespace TransportApp
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-flatly.css",
+                      "~/Content/Site.css",
+                      "~/Scripts/respond.js",
                       "~/Scripts/angular-material/angular-material.css",
-                      "~/Content/site.css"));
+                      "~/Scripts/angular-loading-bar/build/loading-bar.css"
+                      ));
         }
     }
 }

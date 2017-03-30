@@ -1,8 +1,12 @@
-﻿<div class="container body-content" ng-app="TransportApp">
-    <div ng-include="'angularviews/nav/_nav.html'"></div>
-    <div ui-view></div>
+﻿<body>
+    <header>
+        <div ng-include="'angularviews/nav/_nav.html'"></div>
+    </header>
+    <main class="body-content container">
+        <div ui-view></div>
+    </main>
     <hr />
-    <footer>
+    <footer class="container">
         <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
     </footer>
-</div>
+</body>

@@ -10,7 +10,6 @@
     function departureDetailsModalController($uibModalInstance, departure) {
 
         var vm = this;
-        console.log(departure);
         vm.departure = departure;
 
         vm.ok = function () {

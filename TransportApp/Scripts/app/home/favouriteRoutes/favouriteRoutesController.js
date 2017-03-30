@@ -31,12 +31,11 @@
                 };
                 departureService.getDepartures(favRoute.routeType, favRoute.stopId, options).then(function (response) {
                     favRoute.departures = response.data;
+                    favRoute.showDepartures = true;
                 }, function () {
                     alert("Couldn't get departures for Route " + favRoute.stopName);
                 });
-            }
-
-            if (!favRoute.showDepartures) {
+            } else if (!favRoute.showDepartures) {
                 favRoute.showDepartures = true;
             } else {
                 favRoute.showDepartures = false;
