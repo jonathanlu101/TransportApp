@@ -5,16 +5,18 @@
         .module('TransportApp')
         .controller('favouriteRoutesController', favouriteRoutesController);
 
-    favouriteRoutesController.$inject = ['$location', 'favouriteService', 'departureService', '$uibModal'];
+    favouriteRoutesController.$inject = ['$scope', 'favouriteService', 'departureService', '$uibModal', ];
 
-    function favouriteRoutesController($location, favouriteService, departureService, $uibModal) {
+    function favouriteRoutesController($scope, favouriteService, departureService, $uibModal) {
 
         var vm = this;
 
         vm.getFavouriteRoutes = function () {
-
             favouriteService.getRoutes().then(function (response) {
                 vm.favouriteRoutes = response.data;
+                $scope.$watch(favouriteService.getFavouriteRoutes, function (favouriteRoutes) {
+                    vm.favouriteRoutes = favouriteRoutes;
+                }.bind(vm));
             }, function (response) {
                 alert("Couldn't get your favourite routes");
             });

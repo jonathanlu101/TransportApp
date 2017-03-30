@@ -22,6 +22,11 @@
                     templateUrl: 'angularviews/home/favouriteRoutes/_favouriteRoutes.html',
                     controller: 'favouriteRoutesController',
                     controllerAs: 'vm'
+                }, 
+                'nearbyStops@home': {
+                    templateUrl: 'angularviews/home/nearbyStops/_nearbyStops.html',
+                    controller: 'nearbyStopsController',
+                    controllerAs: 'vm'
                 }
             }
         });

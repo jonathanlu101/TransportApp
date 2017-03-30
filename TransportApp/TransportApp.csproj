@@ -351,6 +351,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AngularViews\home\favouriteRoutes\_favouriteRoutes.html" />
+    <Content Include="AngularViews\home\nearbyStops\_nearbyStops.html" />
     <Content Include="AngularViews\login\_login.html" />
     <Content Include="AngularViews\nav\_nav.html" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -895,6 +896,7 @@
     <Content Include="AngularViews\home\departureDetailsModal\_departureDetailsModal.html" />
     <Content Include="Scripts\app\home\homeController.js" />
     <Content Include="AngularViews\home\_home.html" />
+    <Content Include="Scripts\app\home\nearbyStops\nearbyStopsController.js" />
     <Content Include="Scripts\app\login\loginController.js" />
     <Content Include="Scripts\app\nav\navController.js" />
     <Content Include="Scripts\app\shared\authInterceptorService.js" />
