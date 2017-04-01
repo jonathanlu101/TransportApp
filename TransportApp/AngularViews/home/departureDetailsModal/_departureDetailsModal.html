@@ -7,19 +7,19 @@
             <tbody>
                 <tr>
                     <td><b>Route/Line:</b></td>
-                    <td ng-bind="modalVm.departure.routeNumber + ' ' +  modalVm.departure.routeName"> </td>
+                    <td ng-bind="::(modalVm.departure.routeNumber + ' ' +  modalVm.departure.routeName)"> </td>
                 </tr>
                 <tr>
                     <td><b>Direction:</b></td>
-                    <td ng-bind="modalVm.departure.directionName"></td>
+                    <td ng-bind="::modalVm.departure.directionName"></td>
                 </tr>
                 <tr>
                     <td><b>Stop:</b></td>
-                    <td ng-bind="modalVm.departure.stopName"></td>
+                    <td ng-bind="::modalVm.departure.stopName"></td>
                 </tr>
                 <tr>
                     <td><b>Scheduled:</b></td>
-                    <td ng-bind="modalVm.departure.scheduledDepartureUtc | date : 'dd/MM - h:mma'"></td>
+                    <td ng-bind="::modalVm.departure.scheduledDepartureUtc | date : 'dd/MM - h:mma'"></td>
                 </tr>
             </tbody>
         </table>
@@ -32,7 +32,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="departure in modalVm.departure.runPattern">
+                <tr ng-repeat="departure in ::modalVm.departure.runPattern" ng-class="{success : departure.selectedDeparture}">
                     <td ng-bind="departure.stop.stopName"></td>
                     <td ng-bind="departure.scheduledDepartureUtc | date : 'dd/MM - h:mma'"></td>
                 </tr>

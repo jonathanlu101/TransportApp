@@ -63,6 +63,7 @@
             departure.directionName = favRoute.directionName;
             departure.routeName = favRoute.routeName;
             departure.routeNumber = favRoute.routeNumber;
+            departure.stopId = favRoute.stopId;
             departure.stopName = favRoute.stopName;
 
             var modalInstance = $uibModal.open({
