@@ -29,7 +29,7 @@ namespace TransportApp.Controllers
         [Route("nearby")]
         public IHttpActionResult GetNearbyStops(float latitude, float longitude)
         {
-            var response = new List<StopsCollectionDto>();
+            var response = new List<StopCollectionDto>();
             var stopApi = new StopsApi(new PTVApi.Client.Configuration(new ApiClient("http://timetableapi.ptv.vic.gov.au", _devId, _apiKey)));
 
             var trainStopsResponse = stopApi.StopsStopsByGeolocation(latitude,
@@ -37,7 +37,7 @@ namespace TransportApp.Controllers
                 maxDistance: 10000,
                 maxResults: 5,
                 routeTypes: new List<int?> { 0 }).Stops;
-            var trainStopsCollectionDto = new StopsCollectionDto()
+            var trainStopsCollectionDto = new StopCollectionDto()
             {
                 RouteType = 0,
                 Stops = Mapper.Map<List<V3StopGeosearch>, List<StopDto>>(trainStopsResponse)
@@ -49,7 +49,7 @@ namespace TransportApp.Controllers
                 maxDistance: 10000,
                 maxResults: 5,
                 routeTypes: new List<int?> { 1 }).Stops;
-            var tramsStopsCollectionDto = new StopsCollectionDto()
+            var tramsStopsCollectionDto = new StopCollectionDto()
             {
                 RouteType = 1,
                 Stops = Mapper.Map<List<V3StopGeosearch>, List<StopDto>>(tramStopsResponse)
@@ -61,7 +61,7 @@ namespace TransportApp.Controllers
                 maxDistance: 10000,
                 maxResults: 5,
                 routeTypes: new List<int?> { 2 }).Stops;
-            var busStopsCollectionDto = new StopsCollectionDto()
+            var busStopsCollectionDto = new StopCollectionDto()
             {
                 RouteType = 2,
                 Stops = Mapper.Map<List<V3StopGeosearch>, List<StopDto>>(busStopsResponse)

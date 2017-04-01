@@ -4,12 +4,10 @@
     var myApp = angular.module('TransportApp', ['ui.router', 'ngAnimate', 'ngMessages', 'ngMaterial', 'smart-table', 'LocalStorageModule', 'ui.bootstrap', 'angular-loading-bar']);
 
    
-    myApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', 'cfpLoadingBarProvider',
-        function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, cfpLoadingBarProvider) {
+    myApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider',
+        function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
 
             $locationProvider.html5Mode(true);
-
-            cfpLoadingBarProvider.includeBar = true;
 
             $httpProvider.interceptors.push('authInterceptorService');
 

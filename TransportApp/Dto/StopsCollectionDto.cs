@@ -5,7 +5,7 @@ using System.Web;
 
 namespace TransportApp.Dto
 {
-    public class StopsCollectionDto
+    public class StopCollectionDto
     {
         public int RouteType { get; set; }
         public List<StopDto> Stops { get; set; }

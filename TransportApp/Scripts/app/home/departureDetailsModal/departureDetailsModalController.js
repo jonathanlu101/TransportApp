@@ -12,13 +12,5 @@
         var vm = this;
         vm.departure = departure;
 
-        vm.ok = function () {
-            $uibModalInstance.close("asdf");
-        };
-
-        vm.cancel = function () {
-            $uibModalInstance.dismiss('cancel');
-        };
-
     }
 })();

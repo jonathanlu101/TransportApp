@@ -89,7 +89,7 @@ textarea {
 
 /* Favourite Routes Departure Modal*/
 
-#departure-modal table{
+#departure-modal #departure-details-table table{
     font-size: 140%;
     width: 60%;
 }

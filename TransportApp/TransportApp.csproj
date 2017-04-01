@@ -240,12 +240,15 @@
     <Compile Include="Controllers\DepaturesController.cs" />
     <Compile Include="Controllers\FavouriteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PatternsController.cs" />
     <Compile Include="Controllers\StopsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Dto\PatternDepartureDto.cs" />
     <Compile Include="Dto\RouteDepartureDto.cs" />
     <Compile Include="Dto\StopDepartureDto.cs" />
     <Compile Include="Dto\FavouriteStopRouteDirectionDto.cs" />
     <Compile Include="Dto\NearbyStopsDto.cs" />
+    <Compile Include="Dto\PatternStopDto.cs" />
     <Compile Include="Dto\StopsCollectionDto.cs" />
     <Compile Include="Dto\StopDto.cs" />
     <Compile Include="Global.asax.cs">
@@ -899,6 +902,7 @@
     <Content Include="Scripts\app\home\nearbyStops\nearbyStopsController.js" />
     <Content Include="Scripts\app\login\loginController.js" />
     <Content Include="Scripts\app\nav\navController.js" />
+    <Content Include="Scripts\app\pattern\departureService.js" />
     <Content Include="Scripts\app\shared\authInterceptorService.js" />
     <Content Include="Scripts\app\shared\filters.js" />
     <Content Include="Scripts\app\stop\stopService.js" />
@@ -928,6 +932,7 @@
     </Content>
     <Content Include="PtvApi.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <None Include=".bin\bower.cmd" />
     <None Include=".bin\git.cmd" />

@@ -20,6 +20,7 @@ namespace TransportApp.App_Start
                 cfg.CreateMap<V3StopGeosearch, StopDto>();
                 cfg.CreateMap<FavouriteStopRouteDirectionDto, FavouriteStopRouteDirection>();
                 cfg.CreateMap<FavouriteStopRouteDirection, FavouriteStopRouteDirectionDto>();
+                cfg.CreateMap<V3StopDetails, PatternStopDto>();
             });
         }
     }

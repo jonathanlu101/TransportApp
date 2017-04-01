@@ -3,29 +3,40 @@
         <h3 class="modal-title" id="modal-title"><b>Departure Details</b></h3>
     </div>
     <div class="modal-body" id="modal-body">
-        <table class="table">
+        <table class="table" id="departure-details-table">
             <tbody>
                 <tr>
-                    <td><b>Stop:</b></td>
-                    <td>{{modalVm.departure.stopName}}</td>
-                </tr>
-                <tr>
                     <td><b>Route/Line:</b></td>
-                    <td>{{modalVm.departure.routeNumber}} {{modalVm.departure.routeName}}</td>
+                    <td ng-bind="modalVm.departure.routeNumber + ' ' +  modalVm.departure.routeName"> </td>
                 </tr>
                 <tr>
                     <td><b>Direction:</b></td>
-                    <td>{{modalVm.departure.directionName}}</td>
+                    <td ng-bind="modalVm.departure.directionName"></td>
+                </tr>
+                <tr>
+                    <td><b>Stop:</b></td>
+                    <td ng-bind="modalVm.departure.stopName"></td>
                 </tr>
                 <tr>
                     <td><b>Scheduled:</b></td>
-                    <td>{{modalVm.departure.scheduledDepartureUtc | date : "dd/MM - h:mma"}}</td>
+                    <td ng-bind="modalVm.departure.scheduledDepartureUtc | date : 'dd/MM - h:mma'"></td>
                 </tr>
             </tbody>
         </table>
-    </div>
-    <div class="modal-footer">
-        <button class="btn btn-primary" type="button" ng-click="modalVm.ok()">OK</button>
-        <button class="btn btn-warning" type="button" ng-click="modalVm.cancel()">Close</button>
+        <hr />
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Station</th>
+                    <th>Scheduled</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="departure in modalVm.departure.runPattern">
+                    <td ng-bind="departure.stop.stopName"></td>
+                    <td ng-bind="departure.scheduledDepartureUtc | date : 'dd/MM - h:mma'"></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>

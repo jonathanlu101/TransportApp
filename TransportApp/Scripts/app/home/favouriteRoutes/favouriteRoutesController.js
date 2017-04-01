@@ -5,9 +5,9 @@
         .module('TransportApp')
         .controller('favouriteRoutesController', favouriteRoutesController);
 
-    favouriteRoutesController.$inject = ['$scope', 'favouriteService', 'departureService', '$uibModal', ];
+    favouriteRoutesController.$inject = ['$scope', 'favouriteService', 'departureService', '$uibModal', 'patternService' ];
 
-    function favouriteRoutesController($scope, favouriteService, departureService, $uibModal) {
+    function favouriteRoutesController($scope, favouriteService, departureService, $uibModal, patternService) {
 
         var vm = this;
 
@@ -74,7 +74,14 @@
                 controllerAs: 'modalVm',
                 resolve: {
                     departure: function () {
-                        return departure;
+                        if (!departure.runPattern) {
+                            return patternService.getRunPattern(departure.runId, favRoute.routeType).then(function (response) {
+                                departure.runPattern = response.data;
+                                return departure;
+                            });
+                        } else {
+                            return departure;
+                        }
                     }
                 }
             });
