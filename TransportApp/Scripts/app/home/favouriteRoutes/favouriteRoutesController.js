@@ -44,17 +44,29 @@
 
         vm.showMoreFavouriteDepartures = function (favRoute) {
             if (favRoute.departures) {
-                var newMaxResults = favRoute.departures.length + 5;
-                var options = {
-                    routeId: favRoute.routeId,
-                    directionId: favRoute.directionId,
-                    maxResults: newMaxResults
-                };
-                departureService.getDepartures(favRoute.routeType, favRoute.stopId, options).then(function (response) {
-                    favRoute.departures = response.data;
-                }, function () {
-                    alert("Couldn't get departures for Route " + favRoute.stopName);
-                });
+                var newMaxResults = favRoute.visibleDeparturesCount + 5 || 10;
+                console.log(newMaxResults);
+                if (newMaxResults > favRoute.departures.length) {
+                    var options = {
+                        routeId: favRoute.routeId,
+                        directionId: favRoute.directionId,
+                        maxResults: newMaxResults
+                    };
+                    departureService.getDepartures(favRoute.routeType, favRoute.stopId, options).then(function (response) {
+                        favRoute.departures = response.data;
+                        favRoute.visibleDeparturesCount = favRoute.departures.length;
+                    }, function () {
+                        alert("Couldn't get departures for Route " + favRoute.stopName);
+                    });
+                } else {
+                    favRoute.visibleDeparturesCount = favRoute.visibleDeparturesCount + 5;
+                }
+            }
+        }
+
+        vm.showLessFavouriteDepartures = function (favRoute) {
+            if (favRoute.visibleDeparturesCount > 5) {
+                favRoute.visibleDeparturesCount = favRoute.visibleDeparturesCount - 5;
             }
         }
 

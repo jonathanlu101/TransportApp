@@ -18,7 +18,5 @@
                 currentDeparture.selectedDeparture = true;
             };
         }
-
-        console.log(departure);
     }
 })();
