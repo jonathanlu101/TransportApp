@@ -14,7 +14,8 @@
         var service = {
             getRoutes: getRoutes,
             createRoute: createRoute,
-            getFavouriteRoutes : getFavouriteRoutes
+            getFavouriteRoutes: getFavouriteRoutes,
+            deleteRoute: deleteRoute
         };
 
         function getFavouriteRoutes() {
@@ -42,9 +43,15 @@
             var queryString = 'api/favourites/routes';
             $http.post(queryString, data).then(function (response) {
                 favouriteRoutes.push(data);
+                deferred.resolve(response);
             });
 
             return deferred.promise;
+        }
+
+        function deleteRoute(id) {
+            var queryString = 'api/favourites/routes/' + id;
+            return $http.delete(queryString);
         }
 
         return service;

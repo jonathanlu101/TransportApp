@@ -55,5 +55,24 @@ namespace TransportApp.Controllers
 
             return Ok();
         }
+
+        [Route("routes/{id}")]
+        [HttpDelete]
+        public IHttpActionResult DeleteFavouriteStopRouteDirections(int id)
+        {
+            var favouriteRoute = _context.FavouriteStopRouteDirection.Find(id);
+            if (favouriteRoute.UserId == User.Identity.GetUserId())
+            {
+                _context.FavouriteStopRouteDirection.Remove(favouriteRoute);
+                _context.SaveChanges();
+                return Ok();
+            }
+            else
+            {
+                var response = Request.CreateResponse(HttpStatusCode.Forbidden);
+                return ResponseMessage(response);
+            }
+            
+        }
     }
 }

@@ -1,7 +1,8 @@
 ﻿<div id="nearby-stops">
     <h2>Nearby Stops</h2>
+    <div uib-alert ng-repeat="alert in vm.alerts" ng-class="'alert-' + (alert.type || 'warning')" close="vm.closeAlert($index)">{{alert.msg}}</div>
     <button class="btn btn-info" ng-click="vm.getNearbyStops()">Get My Location</button>
-    <md-content ng-cloak>
+    <md-content ng-cloak ng-if="vm.nearbyStopCollections">
         <md-tabs md-dynamic-height md-border-bottom>
             <md-tab ng-repeat="stopCollection in vm.nearbyStopCollections">
                 <md-tab-label>

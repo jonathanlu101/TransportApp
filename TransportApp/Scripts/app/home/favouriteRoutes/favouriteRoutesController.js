@@ -5,11 +5,12 @@
         .module('TransportApp')
         .controller('favouriteRoutesController', favouriteRoutesController);
 
-    favouriteRoutesController.$inject = ['$scope', 'favouriteService', 'departureService', '$uibModal', 'patternService' ];
+    favouriteRoutesController.$inject = ['$scope', '$log', 'favouriteService', 'departureService', '$uibModal', 'patternService' ];
 
-    function favouriteRoutesController($scope, favouriteService, departureService, $uibModal, patternService) {
+    function favouriteRoutesController($scope, $log, favouriteService, departureService, $uibModal, patternService) {
 
         var vm = this;
+        vm.alerts = [];
 
         vm.getFavouriteRoutes = function () {
             favouriteService.getRoutes().then(function (response) {
@@ -98,7 +99,23 @@
                     }
                 }
             });
+
+            modalInstance.result.catch(function () {
+                $log.info("dismissed");
+            });
         }
+
+        vm.deleteFavouriteRoute = function (favRoute) {
+            favouriteService.deleteRoute(favRoute.id).then(function (response) {
+                var index = vm.favouriteRoutes.indexOf(favRoute);
+                vm.favouriteRoutes.splice(index, 1);
+                vm.alerts.push({ type: 'info', msg: "You have removed (" + favRoute.stopName + "/" + favRoute.routeNumber + " " + favRoute.directionName + ") from your Favourite List." });
+            });
+        }
+
+        vm.closeAlert = function (index) {
+            vm.alerts.splice(index, 1);
+        };
 
         vm.getFavouriteRoutes();
 

@@ -5,9 +5,9 @@
         .module('TransportApp')
         .controller('departureDetailsModalController', departureDetailsModalController);
 
-    departureDetailsModalController.$inject = ['$uibModalInstance', 'departure'];
+    departureDetailsModalController.$inject = ['$scope', '$uibModalInstance', 'departure'];
 
-    function departureDetailsModalController($uibModalInstance, departure) {
+    function departureDetailsModalController($scope, $uibModalInstance, departure) {
 
         var vm = this;
         vm.departure = departure;

@@ -77,7 +77,7 @@ textarea {
     margin-right: 20px;
 }
 
-#favourite-routes .route-departures {
+#favourite-routes .route-departure {
     width: 90px;
     margin-right: 10px;
     margin-bottom: 10px;
@@ -85,6 +85,24 @@ textarea {
 
 #favourite-routes .show-more-btn {
     margin-top: 5px;
+}
+
+.favourite-route-name {
+    display: table-cell;
+    width: 100%;
+}
+
+.favourite-route-departures{
+    margin-top: 15px;
+}
+
+.favourite-route-name .glyphicon {
+    margin-right: 15px;
+}
+
+.favourite-route-delete {
+    width: 50px;
+    display: table-cell;
 }
 
 /* Favourite Routes Departure Modal*/

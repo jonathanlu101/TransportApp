@@ -242,3 +242,4 @@ ModelManifest.xml
 .fake/
 /TransportApp.Tests/PtvApi.config
 /TransportApp/PtvApi.config
+/screenshots

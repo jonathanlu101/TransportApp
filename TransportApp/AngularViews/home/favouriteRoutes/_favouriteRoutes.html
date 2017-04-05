@@ -1,30 +1,38 @@
 ﻿<div id="favourite-routes">
     <h2>Favourite Routes</h2>
+    <div uib-alert ng-repeat="alert in vm.alerts" ng-class="'alert-' + (alert.type || 'warning')" close="vm.closeAlert($index)">{{alert.msg}}</div>
     <ul class="list-group">
-        <li class="list-group-item" ng-repeat="favRoute in vm.favouriteRoutes">
-            <h4 ng-click="vm.toogleFavouriteRouteDepartures(favRoute)">
-                <i class="fa" ng-class="{ 'fa-train': favRoute.routeType == 0, 'fa-subway': favRoute.routeType == 1, 'fa-bus': favRoute.routeType == 2 }"></i>
-                <span ng-bind=" favRoute.stopName + ' - ' + favRoute.routeNumber + ' ' + favRoute.directionName"></span>
-                <span class="glyphicon pull-right"
-                      ng-class="{'glyphicon-chevron-down': !favRoute.showDepartures, 'glyphicon-chevron-up': favRoute.showDepartures}"
-                      aria-hidden="true">
-                </span>
-            </h4>
-            <div ng-if="favRoute.departures && favRoute.showDepartures">
-                <button class="btn btn-info btn-sm route-departures" 
-                        ng-repeat="departure in favRoute.departures | limitTo: favRoute.visibleDeparturesCount" 
+        <li class="list-group-item row" ng-repeat="favRoute in vm.favouriteRoutes">
+            <div class="favourite-route-title">
+                <h4 class="favourite-route-name" ng-click="vm.toogleFavouriteRouteDepartures(favRoute)">
+                    <i class="fa" ng-class="{ 'fa-train': favRoute.routeType == 0, 'fa-subway': favRoute.routeType == 1, 'fa-bus': favRoute.routeType == 2 }"></i>
+                    <span ng-bind=" favRoute.stopName + ' - ' + favRoute.routeNumber + ' ' + favRoute.directionName"></span>
+                    <span class="glyphicon pull-right"
+                          ng-class="{'glyphicon-chevron-down': !favRoute.showDepartures, 'glyphicon-chevron-up': favRoute.showDepartures}"
+                          aria-hidden="true">
+                    </span>
+                </h4>
+                <div class="favourite-route-delete">
+                    <button class="btn" ng-click="vm.deleteFavouriteRoute(favRoute)">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+            </div>
+            <div class="favourite-route-departures" ng-if="favRoute.departures && favRoute.showDepartures">
+                <button class="btn btn-info btn-sm route-departure"
+                        ng-repeat="departure in favRoute.departures | limitTo: favRoute.visibleDeparturesCount"
                         ng-click="vm.openFavouriteRouteDepartureModal(favRoute, departure)">
                     <span ng-bind="departure.scheduledDepartureUtc | date : 'h:mma'"></span><br />
                     (<span ng-bind="departure.scheduledDepartureUtc | timeFromNow"></span>)
                 </button>
                 <div class="show-more-btn text-center row">
-                    <div class="col-md-6">
+                    <div class="col-sm-6">
                         <p ng-click="vm.showLessFavouriteDepartures(favRoute)">
                             Show Less
                             <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
                         </p>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-sm-6">
                         <p ng-click="vm.showMoreFavouriteDepartures(favRoute)">
                             Show More
                             <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>

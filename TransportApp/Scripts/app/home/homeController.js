@@ -5,9 +5,9 @@
         .module('TransportApp')
         .controller('homeController', homeController);
 
-    homeController.$inject = ['$location', 'stopService', 'departureService'];
+    homeController.$inject = [];
 
-    function homeController($location, stopService, departureService, $uibModal) {
+    function homeController() {
         var vm = this;
     }
 })();

@@ -10,6 +10,7 @@
     function nearbyStopsController($location, departureService, stopService, favouriteService, $uibModal) {
 
         var vm = this;
+        vm.alerts = [];
 
         function addDetailsToStopCollection(stopCollections) {
             var nameByRouteTypeId = {
@@ -65,8 +66,14 @@
                 directionId: departure.directionId,
                 directionName: departure.directionName
             };
-            favouriteService.createRoute(newRouteData);
+            favouriteService.createRoute(newRouteData).then(function () {
+                vm.alerts.push({ type: 'success', msg: "You have favourited (" + stop.stopName + "/" + departure.routeNumber + " " + departure.directionName + ")" });
+            });
         }
+
+        vm.closeAlert = function (index) {
+            vm.alerts.splice(index, 1);
+        };
 
     }
 })();
